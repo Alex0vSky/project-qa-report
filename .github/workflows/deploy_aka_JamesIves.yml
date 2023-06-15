@@ -14,7 +14,7 @@ jobs:
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
-          repo: Alexovsky5/turbo-octo-adventure
+          repo: https://github.com/Alexovsky5/turbo-octo-adventure
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
