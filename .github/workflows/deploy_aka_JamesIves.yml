@@ -11,12 +11,17 @@ jobs:
         env:
           TOKEN0: ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
           TOKEN1: ${{secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL}}
+          TOKEN2: ${{secrets.SECRET_TINYSYNAPTICSSCROLL1}}
+          TOKEN3: ${{secrets.SECRET_TINYSYNAPTICSSCROLL2}}
         run: | 
-          echo "secret0: " ${{secrets.GITHUB_TOKEN}}
-          echo "secret1: " ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
-          echo "secret1: " ${env:TOKEN0}
-          echo "secret2: " ${{secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL}}
-          echo "secret2: " ${env:TOKEN1}
+          echo "secret00: " ${{secrets.GITHUB_TOKEN}}
+          echo "secret01: " ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
+          echo "secret10: " ${env:TOKEN0}
+          echo "secret11: " ${{secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL}}
+          echo "secret20: " ${env:TOKEN2}
+          echo "secret21: " ${env:TOKEN3}
+          echo "secret22: " ${{secrets.SECRET_TINYSYNAPTICSSCROLL1}}
+          echo "secret23: " ${{secrets.SECRET_TINYSYNAPTICSSCROLL2}}
       - name: Download artifact
         uses: dawidd6/action-download-artifact@v2
         with:
