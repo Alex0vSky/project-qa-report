@@ -7,27 +7,11 @@ jobs:
       actions: read # for "dawidd6/action-download-artifact@v2"
       contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
     steps:
-      - name: Disclosure token
-        env:
-          TOKEN0: ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
-          TOKEN1: ${{secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL}}
-          TOKEN2: ${{secrets.SECRET_TINYSYNAPTICSSCROLL1}}
-          TOKEN3: ${{secrets.SECRET_TINYSYNAPTICSSCROLL2}}
-          GITHUB_TOKEN: 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
-        run: | 
-          echo "secret00: " ${{secrets.GITHUB_TOKEN}}
-          echo "secret01: " ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
-          echo "secret10: " ${env:TOKEN0}
-          echo "secret11: " ${{secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL}}
-          echo "secret20: " ${env:TOKEN2}
-          echo "secret21: " ${env:TOKEN3}
-          echo "secret22: " ${{secrets.SECRET_TINYSYNAPTICSSCROLL1}}
-          echo "secret23: " ${{secrets.SECRET_TINYSYNAPTICSSCROLL2}}
-          echo "secret30: " ${env:GITHUB_TOKEN}
       - name: Download artifact
+        continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${env:GITHUB_TOKEN}
+          github_token: ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
@@ -36,3 +20,46 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: gtest_report\out
+
+      - name: Download artifact
+        continue-on-error: true
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL}}
+          workflow: googletest.yml
+          name: my-artifact
+          search_artifacts: true
+          repo: Alexovsky5/turbo-octo-adventure
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: gtest_report\out
+
+      - name: Download artifact
+        continue-on-error: true
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{secrets.SECRET_TINYSYNAPTICSSCROLL1}}
+          workflow: googletest.yml
+          name: my-artifact
+          search_artifacts: true
+          repo: Alexovsky5/turbo-octo-adventure
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: gtest_report\out
+
+      - name: Download artifact
+        continue-on-error: true
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{secrets.SECRET_TINYSYNAPTICSSCROLL2}}
+          workflow: googletest.yml
+          name: my-artifact
+          search_artifacts: true
+          repo: Alexovsky5/turbo-octo-adventure
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: gtest_report\out
+
