@@ -1,0 +1,21 @@
+name: Try JamesIves/github-pages-deploy-action
+on: [workflow_dispatch]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read # for "dawidd6/action-download-artifact@v2"
+      contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
+    steps:
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: googletest.yml
+          name: my-artifact
+          search_artifacts: true
+          repo: https://github.com/Alexovsky5/turbo-octo-adventure
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: gtest_report\out
