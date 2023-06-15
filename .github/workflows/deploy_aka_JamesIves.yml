@@ -5,11 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/checkout@v3
+
+      - name: Download artifact
         continue-on-error: true
+        uses: dawidd6/action-download-artifact@v2
         with:
-            repository: Alexovsky5/turbo-octo-adventure
-            token: ${PAT_TINYSYNAPTICSSCROLL}
+          github_token: $PAT_TINYSYNAPTICSSCROLL
+          workflow: googletest.yml
+          name: artifact-all-tests-builded
+          search_artifacts: true
+          repo: Alexovsky5/turbo-octo-adventure
 
       - name: Download artifact
         continue-on-error: true
@@ -17,9 +22,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${PAT_TINYSYNAPTICSSCROLL}
         with:
-          token: ${PAT_TINYSYNAPTICSSCROLL}
-          github_token: ${PAT_TINYSYNAPTICSSCROLL}
+          github_token: $GITHUB_TOKEN
           workflow: googletest.yml
           name: artifact-all-tests-builded
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
+
+      - uses: actions/checkout@v3
+        continue-on-error: true
+        with:
+            repository: Alexovsky5/turbo-octo-adventure
+            token: ${PAT_TINYSYNAPTICSSCROLL}
