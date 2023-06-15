@@ -13,10 +13,11 @@ jobs:
         continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
         with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
-          repo: https://github.com/Alexovsky5/turbo-octo-adventure
+          repo: Alexovsky5/turbo-octo-adventure
 
       - name: Download artifact
         env:
@@ -24,10 +25,11 @@ jobs:
         continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
         with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
-          repo: https://github.com/Alexovsky5/turbo-octo-adventure
+          repo: Alexovsky5/turbo-octo-adventure
 
       - name: Download artifact
         env:
@@ -35,10 +37,11 @@ jobs:
         continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
         with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
-          repo: https://github.com/Alexovsky5/turbo-octo-adventure
+          repo: Alexovsky5/turbo-octo-adventure
 
       - name: Download artifact
         env:
@@ -46,12 +49,13 @@ jobs:
         continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
         with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
-          repo: https://github.com/Alexovsky5/turbo-octo-adventure
+          repo: Alexovsky5/turbo-octo-adventure
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: gtest_report\out
+      # - name: Deploy 🚀
+        # uses: JamesIves/github-pages-deploy-action@v4
+        # with:
+          # folder: gtest_report\out
