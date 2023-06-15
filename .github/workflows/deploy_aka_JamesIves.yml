@@ -1,10 +1,10 @@
 name: Try JamesIves/github-pages-deploy-action
 on: [push]
+permissions:
+  contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
     steps:
       - uses: actions/checkout@v3
       - name: Download artifact
@@ -18,4 +18,5 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          branch: main
           folder: gtest_report/out
