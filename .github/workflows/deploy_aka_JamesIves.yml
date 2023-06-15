@@ -19,3 +19,27 @@ jobs:
         with:
             repository: Alexovsky5/turbo-octo-adventure
             token: ${{ secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL }}
+
+      - uses: actions/checkout@v3
+        continue-on-error: true
+        with:
+            repository: Alexovsky5/turbo-octo-adventure
+            token: ${ PAT_TINYSYNAPTICSSCROLL }
+
+      - uses: actions/checkout@v3
+        continue-on-error: true
+        with:
+            repository: Alexovsky5/turbo-octo-adventure
+            token: ${ PAT_CLASSIC_TINYSYNAPTICSSCROLL }
+
+      - uses: actions/checkout@v3
+        continue-on-error: true
+        with:
+            repository: Alexovsky5/turbo-octo-adventure
+            token: $PAT_TINYSYNAPTICSSCROLL
+
+      - uses: actions/checkout@v3
+        continue-on-error: true
+        with:
+            repository: Alexovsky5/turbo-octo-adventure
+            token: $PAT_CLASSIC_TINYSYNAPTICSSCROLL
