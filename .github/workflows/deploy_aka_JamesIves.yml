@@ -7,14 +7,20 @@ jobs:
       actions: read # for "dawidd6/action-download-artifact@v2"
       contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
     steps:
+      - name: Disclosure token
+        run: | 
+          echo "secret1: " ${{secrets.GITHUB_TOKEN}}
+          echo "secret2: " ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
       - name: Download artifact
         uses: dawidd6/action-download-artifact@v2
+        env:
+          GITHUB_TOKEN: ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
         with:
-          github_token: ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
+          github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
-          repo: https://github.com/Alexovsky5/turbo-octo-adventure
+          repo: Alexovsky5/turbo-octo-adventure
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
