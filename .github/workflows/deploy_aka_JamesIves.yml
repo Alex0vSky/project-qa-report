@@ -16,10 +16,6 @@ jobs:
           name: my-artifact
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: gtest_report\out
 
       - name: Download artifact
         continue-on-error: true
@@ -30,10 +26,6 @@ jobs:
           name: my-artifact
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: gtest_report\out
 
       - name: Download artifact
         continue-on-error: true
@@ -44,10 +36,6 @@ jobs:
           name: my-artifact
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: gtest_report\out
 
       - name: Download artifact
         continue-on-error: true
@@ -58,8 +46,8 @@ jobs:
           name: my-artifact
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: gtest_report\out
-
