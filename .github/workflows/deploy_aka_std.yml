@@ -25,9 +25,8 @@ jobs:
         run: |
           mv -v gtest_report/out/gtest_report.html gtest_report/out/index.html
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
           path: gtest_report/out/*
       - name: Deploy to GitHub Pages
         id: deployment
