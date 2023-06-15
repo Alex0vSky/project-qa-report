@@ -11,6 +11,10 @@ jobs:
         with:
           github_token: ${{ secrets.FROM_USER_SETTINGS__PAT_CLASSIC_TINYSYNAPTICSSCROLL }}
           workflow: googletest.yml
-          name: artifact-all-tests-builded
+          name: my-artifact
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: gtest_report\out
