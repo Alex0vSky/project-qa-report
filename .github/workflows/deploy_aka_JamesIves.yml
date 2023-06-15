@@ -5,46 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Disclosure token
-        continue-on-error: true
-        env:
-          STRING: "asdasdasd"
-          TOKEN0: ${PAT_TINYSYNAPTICSSCROLL}
-          TOKEN1: ${PAT_CLASSIC_TINYSYNAPTICSSCROLL}
-          TOKEN2: ${{secrets.SECRET_TINYSYNAPTICSSCROLL1}}
-          TOKEN3: ${{secrets.SECRET_TINYSYNAPTICSSCROLL2}}
-          TOKENCLASSIC: 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
-        run: | 
-          echo "STRING: " ${env:STRING}
-          echo "STRING: " ${STRING}
-          echo "STRING: " $STRING
-          echo "secret00: " ${{secrets.GITHUB_TOKEN}}
-          echo "TOKEN0: " ${TOKEN0}
-          echo "TOKEN1: " ${TOKEN1}
-          echo "TOKEN2: " ${TOKEN2}
-          echo "TOKEN3: " ${TOKEN3}
-          echo "secret22: " ${{secrets.SECRET_TINYSYNAPTICSSCROLL1}}
-          echo "secret23: " ${{secrets.SECRET_TINYSYNAPTICSSCROLL2}}
-          echo "secret30: " ${TOKENCLASSIC}
-
-      - name: Download artifact
-        continue-on-error: true
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          github_token: token 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
-          workflow: googletest.yml
-          name: artifact-all-tests-builded
-          search_artifacts: true
-          repo: Alexovsky5/turbo-octo-adventure
-
-      - uses: actions/checkout@v3
-        continue-on-error: true
-        with:
-            repository: Alexovsky5/turbo-octo-adventure
-            token: token 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
-
-      - uses: actions/checkout@v3
-        continue-on-error: true
         with:
             repository: Alexovsky5/turbo-octo-adventure
             token: ${PAT_TINYSYNAPTICSSCROLL}
