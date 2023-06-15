@@ -17,4 +17,4 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: gtest_report\out
+          folder: gtest_report/out
