@@ -24,6 +24,7 @@ jobs:
       - name: Renaming
         run: |
           mv -v gtest_report/out/gtest_report.html gtest_report/out/index.html
+          echo 123 > gtest_report/out/test.txt
 
       - uses: actions/upload-pages-artifact@v1
         with:
