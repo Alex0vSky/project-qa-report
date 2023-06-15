@@ -4,12 +4,21 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        continue-on-error: true
+        with:
+            repository: Alexovsky5/turbo-octo-adventure
+            token: ${PAT_TINYSYNAPTICSSCROLL}
+
       - name: Download artifact
+        continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
         env:
           GITHUB_TOKEN: ${PAT_TINYSYNAPTICSSCROLL}
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
+          token: ${PAT_TINYSYNAPTICSSCROLL}
+          github_token: ${PAT_TINYSYNAPTICSSCROLL}
           workflow: googletest.yml
           name: artifact-all-tests-builded
           search_artifacts: true
