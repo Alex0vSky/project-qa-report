@@ -1,4 +1,4 @@
-name: Try JamesIves/github-pages-deploy-action 7
+name: Try JamesIves/github-pages-deploy-action 9
 on: [workflow_dispatch]
 jobs:
   deploy:
