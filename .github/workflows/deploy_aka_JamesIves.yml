@@ -9,8 +9,9 @@ jobs:
     steps:
       - name: Disclosure token
         run: | 
-          echo "secret1: " ${{secrets.GITHUB_TOKEN}}
-          echo "secret2: " ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
+          echo "secret0: " ${{secrets.GITHUB_TOKEN}}
+          echo "secret1: " ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
+          echo "secret2: " ${{secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL}}
       - name: Download artifact
         uses: dawidd6/action-download-artifact@v2
         env:
