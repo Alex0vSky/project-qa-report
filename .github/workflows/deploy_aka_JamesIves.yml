@@ -7,39 +7,16 @@ jobs:
       actions: read # for "dawidd6/action-download-artifact@v2"
       contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
     steps:
-
-      - uses: actions/checkout@v3
-        continue-on-error: true
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
         with:
-            repository: Alexovsky5/turbo-octo-adventure
-            token: ${{ secrets.PAT_TINYSYNAPTICSSCROLL }}
+          github_token: ${PAT_TINYSYNAPTICSSCROLL}
+          workflow: googletest.yml
+          name: artifact-all-tests-builded
+          search_artifacts: true
+          repo: Alexovsky5/turbo-octo-adventure
 
-      - uses: actions/checkout@v3
-        continue-on-error: true
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-            repository: Alexovsky5/turbo-octo-adventure
-            token: ${{ secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL }}
-
-      - uses: actions/checkout@v3
-        continue-on-error: true
-        with:
-            repository: Alexovsky5/turbo-octo-adventure
-            token: ${ PAT_TINYSYNAPTICSSCROLL }
-
-      - uses: actions/checkout@v3
-        continue-on-error: true
-        with:
-            repository: Alexovsky5/turbo-octo-adventure
-            token: ${ PAT_CLASSIC_TINYSYNAPTICSSCROLL }
-
-      - uses: actions/checkout@v3
-        continue-on-error: true
-        with:
-            repository: Alexovsky5/turbo-octo-adventure
-            token: $PAT_TINYSYNAPTICSSCROLL
-
-      - uses: actions/checkout@v3
-        continue-on-error: true
-        with:
-            repository: Alexovsky5/turbo-octo-adventure
-            token: $PAT_CLASSIC_TINYSYNAPTICSSCROLL
+          folder: gtest_report\out
