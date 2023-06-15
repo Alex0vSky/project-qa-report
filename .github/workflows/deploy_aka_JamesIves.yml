@@ -7,27 +7,15 @@ jobs:
       actions: read # for "dawidd6/action-download-artifact@v2"
       contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
     steps:
-      - uses: actions/checkout@v3
-      - name: Download artifact
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TINYSYNAPTICSSCROLL }}
-        continue-on-error: true
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: googletest.yml
-          name: artifact-all-tests-builded
-          search_artifacts: true
-          repo: Alexovsky5/turbo-octo-adventure
 
-      - name: Download artifact
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL }}
+      - uses: actions/checkout@v3
         continue-on-error: true
-        uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: googletest.yml
-          name: artifact-all-tests-builded
-          search_artifacts: true
-          repo: Alexovsky5/turbo-octo-adventure
+            repository: Alexovsky5/turbo-octo-adventure
+            token: ${{ secrets.PAT_TINYSYNAPTICSSCROLL }}
+
+      - uses: actions/checkout@v3
+        continue-on-error: true
+        with:
+            repository: Alexovsky5/turbo-octo-adventure
+            token: ${{ secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL }}
