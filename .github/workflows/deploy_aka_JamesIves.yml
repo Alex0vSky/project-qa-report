@@ -8,7 +8,7 @@ jobs:
       - name: Disclosure token
         continue-on-error: true
         env:
-          STRING: asdasdasd
+          STRING: "asdasdasd"
           TOKEN0: ${PAT_TINYSYNAPTICSSCROLL}
           TOKEN1: ${PAT_CLASSIC_TINYSYNAPTICSSCROLL}
           TOKEN2: ${{secrets.SECRET_TINYSYNAPTICSSCROLL1}}
@@ -16,11 +16,13 @@ jobs:
           TOKENCLASSIC: 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
         run: | 
           echo "STRING: " ${env:STRING}
+          echo "STRING: " ${STRING}
+          echo "STRING: " $STRING
           echo "secret00: " ${{secrets.GITHUB_TOKEN}}
-          echo "secret10: " ${env:TOKEN0}
-          echo "secret11: " ${env:TOKEN1}
-          echo "secret20: " ${env:TOKEN2}
-          echo "secret21: " ${env:TOKEN3}
+          echo "TOKEN0: " ${env:TOKEN0}
+          echo "TOKEN1: " ${env:TOKEN1}
+          echo "TOKEN2: " ${env:TOKEN2}
+          echo "TOKEN3: " ${env:TOKEN3}
           echo "secret22: " ${{secrets.SECRET_TINYSYNAPTICSSCROLL1}}
           echo "secret23: " ${{secrets.SECRET_TINYSYNAPTICSSCROLL2}}
           echo "secret30: " ${env:TOKENCLASSIC}
@@ -28,10 +30,8 @@ jobs:
       - name: Download artifact
         continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
-        env:
-          GITHUB_TOKEN: ${PAT_TINYSYNAPTICSSCROLL}
         with:
-          github_token: ${env:TOKEN0}
+          github_token: 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
           workflow: googletest.yml
           name: artifact-all-tests-builded
           search_artifacts: true
@@ -40,4 +40,4 @@ jobs:
       - uses: actions/checkout@v3
         with:
             repository: Alexovsky5/turbo-octo-adventure
-            token: ${env:TOKEN0}
+            token: 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
