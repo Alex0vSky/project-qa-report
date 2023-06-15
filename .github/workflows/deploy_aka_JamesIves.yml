@@ -15,6 +15,9 @@ jobs:
           name: my-artifact
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
+      - name: Renaming
+        run: |
+          mv -v gtest_report/out/gtest_report.html gtest_report/out/index.html
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
