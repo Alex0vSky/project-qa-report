@@ -7,4 +7,4 @@ jobs:
       - uses: actions/checkout@v3
         with:
             repository: Alexovsky5/turbo-octo-adventure
-            token: ${ secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL }
+            token: ${{ secrets.FROM_USER_SETTINGS__PAT_CLASSIC_TINYSYNAPTICSSCROLL }}
