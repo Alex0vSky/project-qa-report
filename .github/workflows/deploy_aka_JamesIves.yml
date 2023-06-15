@@ -10,7 +10,7 @@ jobs:
       - name: Download artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          token: ${{ secrets.PAT_TINYSYNAPTICSSCROLL }}
+          github_token: ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
