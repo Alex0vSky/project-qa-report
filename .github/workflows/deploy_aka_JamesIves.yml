@@ -8,40 +8,44 @@ jobs:
       contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
     steps:
       - name: Download artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TINYSYNAPTICSSCROLL }}
         continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{secrets.PAT_TINYSYNAPTICSSCROLL}}
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
 
       - name: Download artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL }}
         continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{secrets.PAT_CLASSIC_TINYSYNAPTICSSCROLL}}
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
 
       - name: Download artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.SECRET_TINYSYNAPTICSSCROLL1 }}
         continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{secrets.SECRET_TINYSYNAPTICSSCROLL1}}
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
 
       - name: Download artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.SECRET_TINYSYNAPTICSSCROLL2 }}
         continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{secrets.SECRET_TINYSYNAPTICSSCROLL2}}
           workflow: googletest.yml
           name: my-artifact
           search_artifacts: true
