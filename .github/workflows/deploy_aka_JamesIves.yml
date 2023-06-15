@@ -1,4 +1,4 @@
-name: Try JamesIves/github-pages-deploy-action
+name: Try JamesIves/github-pages-deploy-action 2
 on: [push]
 jobs:
   deploy:
