@@ -3,20 +3,16 @@ on: [push]
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      actions: read # for "dawidd6/action-download-artifact@v2"
-      contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
     steps:
       - name: Download artifact
         uses: dawidd6/action-download-artifact@v2
+        env:
+          GITHUB_TOKEN: ${PAT_TINYSYNAPTICSSCROLL}
         with:
-          github_token: ${PAT_TINYSYNAPTICSSCROLL}
+          GITHUB_TOKEN: ${PAT_TINYSYNAPTICSSCROLL}
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: googletest.yml
           name: artifact-all-tests-builded
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: gtest_report\out
