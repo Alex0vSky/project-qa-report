@@ -23,12 +23,12 @@ jobs:
           repo: Alexovsky5/turbo-octo-adventure
       - name: Renaming
         run: |
-          mv -v gtest_report/out/gtest_report.html gtest_report/out/index.html
-          echo 123 123 > gtest_report/out/test.txt
+          mv -v gtest_report.html index.html
+          echo 123 123 > test.txt
 
       - uses: actions/upload-pages-artifact@v1
         with:
-          path: gtest_report/out
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
