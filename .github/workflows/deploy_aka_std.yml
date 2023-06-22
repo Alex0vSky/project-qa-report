@@ -1,5 +1,9 @@
 name: Try standart (Beta) actions/deploy-pages
-on: [push,workflow_dispatch]
+on: [ push, workflow_dispatch ]
+# Configuration
+env:
+  strPlatform: x86 # or x64
+  strConfiguration: Debug # or Release
 jobs:
   deploy:
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
@@ -17,14 +21,14 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{ secrets.FROM_USER_SETTINGS__PAT_CLASSIC_TINYSYNAPTICSSCROLL }}
-          workflow: googletest.yml
-          name: artifact-gtest-report
+          workflow: TestsResultAndCoverage.yml
+          name: artifact-coverage-tests-OpenCppCoverage-${{env.strPlatform}}-${{env.strConfiguration}}
           search_artifacts: true
           repo: Alexovsky5/turbo-octo-adventure
       - name: Renaming
+          # mv -v gtest_report.html index.html
         run: |
-          mv -v gtest_report.html index.html
-          echo 123 123 > test.txt
+          echo "From '${{github.job}}' of '${{github.run_id}}', attempt number '${{github.run_attempt}}'" > test.txt
 
       - uses: actions/upload-pages-artifact@v1
         with:
