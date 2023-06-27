@@ -4,6 +4,7 @@ on: [ push, workflow_dispatch ]
 env:
   strPlatform: x86 # or x64
   strConfiguration: Debug # or Release
+  strProject: TinySynapticsScroll
 jobs:
   deploy:
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
@@ -25,10 +26,11 @@ jobs:
           name: artifact-coverage-tests-OpenCppCoverage-${{env.strPlatform}}-${{env.strConfiguration}}
           search_artifacts: true
           repo: Alex0vSky/TinySynapticsScroll
+          path: ${{ env.strProject }}
+      # mv -v gtest_report.html index.html
       - name: Renaming
-          # mv -v gtest_report.html index.html
         run: |
-          echo "Its '${{github.workflow}}', run number.attempt '${{github.run_number}}.${{github.run_attempt}}'" > test.txt
+          echo "Its '${{github.workflow}}', run number.attempt '${{github.run_number}}.${{github.run_attempt}}'" > ${{ env.strProject }}/from_action.txt
 
       - uses: actions/upload-pages-artifact@v1
         with:
