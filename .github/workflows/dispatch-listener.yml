@@ -1,0 +1,15 @@
+name: Try peter-evans/repository-dispatch, events listener
+on: { workflow_dispatch, repository_dispatch: { types: [my-event] } }
+# Configuration
+env:
+  strPlatform: x86 # or x64
+  strConfiguration: Debug # or Release
+  strProject: TinySynapticsScroll
+jobs:
+  myEvent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+      - run: echo ${{ github.event.client_payload.sha }}
