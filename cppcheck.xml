@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<results version="2">
-  <cppcheck version="2.11" />
-  <errors>
-  </errors>
-  <Arguments> --std=c++14 --platform=win32A --library=microsoft_sal --library=windows --enable=all -q --xml  -I "resource" -I "src" -I "ThirdParty\SynCOMAPIv1_0\Include" -DDECLSPEC_IMPORT=__declspec(import) -D_X86_=1 -D_M_HYBRID_X86_ARM64=1 --suppress=missingIncludeSystem --suppress=missingInclude:*\SynCtrl.h --suppress=preprocessorErrorDirective:*\SynCtrl.h src</Arguments>
-</results>
