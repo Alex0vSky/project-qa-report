@@ -1,16 +1,30 @@
-name: Public GitHubPages by event
+name: Publish GitHubPages by event
 on: { repository_dispatch: { types: [a0s_event_public_pages] } }
 permissions:
-  contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
-# Configuration no
+  contents: write # write for "JamesIves/github-pages-deploy-action"
+# Has no configuration
 jobs:
-  myEvent:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Read event client_payload
         run: |
-          echo ${{ github.event.client_payload.project }}
           echo ${{ github.event.client_payload.repo }}
           echo ${{ github.event.client_payload.workflow }}
           echo ${{ github.event.client_payload.artifact }}
+          echo ${{ github.event.client_payload.project }}
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.FROM_USER_SETTINGS__PAT_CLASSIC_TINYSYNAPTICSSCROLL }}
+          repo: ${{ github.event.client_payload.repo }}
+          workflow: ${{ github.event.client_payload.workflow }}
+          name: ${{ github.event.client_payload.artifact }}
+          search_artifacts: true
+          path: ${{ github.event.client_payload.project }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: main
+          folder: ${{ github.event.client_payload.project }}
