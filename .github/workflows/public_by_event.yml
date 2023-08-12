@@ -28,3 +28,4 @@ jobs:
         with:
           branch: main
           folder: ${{ github.event.client_payload.project }}
+          target-folder: ${{ github.event.client_payload.project }}
