@@ -23,6 +23,8 @@ jobs:
           name: ${{ github.event.client_payload.artifact }}
           search_artifacts: true
           path: ${{ github.event.client_payload.project }}
+      - name: Mark
+        run: echo "'${{github.workflow}}', '${{github.run_number}}.${{github.run_attempt}}'" > ${{ github.event.client_payload.project }}/from_action.txt
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
