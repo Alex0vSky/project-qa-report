@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>DevTpl.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+    <body onload="prettyPrint()">
+        <h4></h4>
+        <pre class="prettyprint lang-cpp linenums">
+// src\DevTpl.h - stored here template
+#pragma once // Copyright 2023 Alex0vSky (https://github.com/Alex0vSky)
+namespace prj_3d { namespace UePrjCreator {
+class DevTpl {
+	std::filesystem::path m_TemporaryDirectory;
+	std::wstring m_UProjectFullFilename;
+<span style = "background-color:#fdd">	DevTpl() = default;
+	void write_(detail_::Dir &amp;RootDir, const std::string &amp;UProjectFullFilename) {
+		RootDir.createFileAndWrite( UProjectFullFilename.c_str( ), R"A0S_DELIM(</span>
+{
+	"FileVersion": 3,
+	"EngineAssociation": "",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+	]
+}
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">		RootDir.createFileAndWrite( "contents.txt", R"A0S_DELIM(</span>
+../../../Templates/TP_devTpl/manifest.json
+../../../Templates/TP_devTpl/Config/config.ini
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">		RootDir.createFileAndWrite( "manifest.json", R"A0S_DELIM(</span>
+{
+	"Version": 1,
+	"Name":
+	[
+		{
+			"Language": "en",
+			"Text": "Blank from UePrjCreator"
+		}
+	],
+	"Description":
+	[
+		{
+			"Language": "en",
+			"Text": "A clean empty project monolitic[without Editor] exe game from UePrjCreator."
+		}
+	],
+	"AssetTypes": [],
+	"SearchTags": [],
+	"ClassTypes": "",
+	"Category": "",
+	"FocusAsset": "",
+	"Screenshots":
+	[
+	],
+	"SortKey": "TP_devTpl",
+	"AdditionalFeaturePacks": []
+}
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">		auto SubDirSource = RootDir.createSubDirectory( "Source" );
+		SubDirSource.createFileAndWrite( "TP_devTpl.Target.cs", R"A0S_DELIM(</span>
+using UnrealBuildTool;
+using System.Collections.Generic;
+
+public class TP_devTplTarget : TargetRules
+{
+	public TP_devTplTarget(TargetInfo Target) : base(Target)
+	{
+		Type = TargetType.Game;
+		DefaultBuildSettings = BuildSettingsVersion.V2;
+
+		WindowsPlatform.bUseBundledDbgHelp = false;
+		WindowsPlatform.bOptimizeGlobalData = false;
+		WindowsPlatform.bCreateHotPatchableImage = false;
+		bUseIncrementalLinking = true;
+		bUsePDBFiles = false;
+		bDisableDebugInfoForGeneratedCode = true;
+		bUsePCHFiles = true;
+		bDisableDebugInfo = true;
+		bOmitPCDebugInfoInDevelopment = true;
+		bAllowRemotelyCompiledPCHs = true;		
+		bUseInlining = false; // need UBT with -OverrideBuildEnvironment
+		LinkType = TargetLinkType.Monolithic;		
+		ExtraModuleNames.AddRange( new string[] { "TP_devTpl" } );
+	}
+}
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">		auto SubDirSourceTP_devTpl = SubDirSource.createSubDirectory( "TP_devTpl" );
+		SubDirSourceTP_devTpl.createFileAndWrite( "TP_devTpl.Build.cs", R"A0S_DELIM(</span>
+using UnrealBuildTool;
+
+public class TP_devTpl : ModuleRules
+{
+	public TP_devTpl(ReadOnlyTargetRules Target) : base(Target)
+	{
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+		OptimizeCode = CodeOptimization.Never;
+
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
+
+		PrivateDependencyModuleNames.AddRange(new string[] {  });
+
+		// Uncomment if you are using Slate UI
+		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
+		
+		// Uncomment if you are using online features
+		// PrivateDependencyModuleNames.Add("OnlineSubsystem");
+
+		// To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true
+	}
+}
+			)A0S_DELIM" );
+
+<span style = "background-color:#fdd">		SubDirSourceTP_devTpl.createFileAndWrite( "TP_devTpl.cpp", R"A0S_DELIM(</span>
+#include "TP_devTpl.h"
+#include "Modules/ModuleManager.h"
+
+IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, TP_devTpl, "TP_devTpl" );
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">		SubDirSourceTP_devTpl.createFileAndWrite( "TP_devTpl.h", R"A0S_DELIM(</span>
+#pragma once
+#include "CoreMinimal.h"
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">		SubDirSourceTP_devTpl.createFileAndWrite( "TP_devTplGameModeBase.cpp", R"A0S_DELIM(</span>
+#include "TP_devTplGameModeBase.h"
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">		SubDirSourceTP_devTpl.createFileAndWrite( "TP_devTplGameModeBase.h", R"A0S_DELIM(</span>
+#pragma once
+#include "CoreMinimal.h"
+#include "GameFramework/GameModeBase.h"
+#include "TP_devTplGameModeBase.generated.h"
+
+UCLASS()
+class TP_DEVTPL_API ATP_devTplGameModeBase : public AGameModeBase
+{
+	GENERATED_BODY()
+	
+};
+			)A0S_DELIM" );
+
+<span style = "background-color:#fdd">		auto SubDirConfig = RootDir.createSubDirectory( "Config" );
+		SubDirConfig.createFileAndWrite( "config.ini", R"A0S_DELIM(</span>
+[Redirects]
+GameName=TP_devTpl
+
+[AdditionalFilesToAdd]
++Files=Templates/TP_devTpl/content/*.*
++Files=Templates/TP_devTpl/Source/TP_devTpl/TP_devTpl.h
++Files=Templates/TP_devTpl/Source/TP_devTpl/TP_devTplGameModeBase.cpp
++Files=Templates/TP_devTpl/Source/TP_devTpl/TP_devTplGameModeBase.h
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">		SubDirConfig.createFileAndWrite( "DefaultEditor.ini", R"A0S_DELIM(</span>
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">		SubDirConfig.createFileAndWrite( "DefaultEngine.ini", R"A0S_DELIM(</span>
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">		SubDirConfig.createFileAndWrite( "DefaultGame.ini", R"A0S_DELIM(</span>
+[/Script/EngineSettings.GeneralProjectSettings]
+ProjectID=433A7B804CE7CAC9021E63AF28FF6EE5
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">		SubDirConfig.createFileAndWrite( "TemplateDefs.ini", R"A0S_DELIM(</span>
+[/Script/GameProjectGeneration.TemplateProjectDefs]
+
+Categories=Games
+
+LocalizedDisplayNames=(Language="en", Text="Blank from UePrjCreator")
+LocalizedDescriptions=(Language="en", Text="A clean empty project monolitic[without Editor] exe game from UePrjCreator.")
+
+ClassTypes=GameMode
+
+FoldersToIgnore=Binaries
+FoldersToIgnore=Build
+FoldersToIgnore=Intermediate
+FoldersToIgnore=Saved
+FoldersToIgnore=Media
+
+FilesToIgnore="%TEMPLATENAME%.uproject"
+FilesToIgnore="%TEMPLATENAME%.png"
+FilesToIgnore="Config/TemplateDefs.ini"
+FilesToIgnore="Config/config.ini"
+FilesToIgnore="%TEMPLATENAME%.opensdf"
+FilesToIgnore="%TEMPLATENAME%.sdf"
+FilesToIgnore="%TEMPLATENAME%.v11.suo"
+FilesToIgnore="%TEMPLATENAME%.v12.suo"
+FilesToIgnore="%TEMPLATENAME%.sln"
+FilesToIgnore="Manifest.json"
+FilesToIgnore="contents.txt"
+
+FolderRenames=(From="Source/%TEMPLATENAME%", To="Source/%PROJECTNAME%")
+
+FilenameReplacements=(Extensions=("cpp","h","ini","cs"), From="%TEMPLATENAME_UPPERCASE%", To="%PROJECTNAME_UPPERCASE%", bCaseSensitive=true)
+FilenameReplacements=(Extensions=("cpp","h","ini","cs"), From="%TEMPLATENAME_LOWERCASE%", To="%PROJECTNAME_LOWERCASE%", bCaseSensitive=true)
+FilenameReplacements=(Extensions=("cpp","h","ini","cs"), From="%TEMPLATENAME%", To="%PROJECTNAME%", bCaseSensitive=false)
+
+ReplacementsInFiles=(Extensions=("cpp","h","ini","cs"), From="%TEMPLATENAME_UPPERCASE%", To="%PROJECTNAME_UPPERCASE%", bCaseSensitive=true)
+ReplacementsInFiles=(Extensions=("cpp","h","ini","cs"), From="%TEMPLATENAME_LOWERCASE%", To="%PROJECTNAME_LOWERCASE%", bCaseSensitive=true)
+ReplacementsInFiles=(Extensions=("cpp","h","ini","cs"), From="%TEMPLATENAME%", To="%PROJECTNAME%", bCaseSensitive=false)
+
+; The sort key to use for the template to bypass the default alphabetical sorting.
+SortKey="_1"
+			)A0S_DELIM" );
+<span style = "background-color:#fdd">	}</span>
+
+public:
+<span style = "background-color:#fdd">	static DevTpl &amp;Get() {
+		static DevTpl DevTpl;
+		return DevTpl;
+	}
+	static void removeTemporaryDirectories( ) {
+		std::error_code nothrow_;
+		std::filesystem::path TemporaryDirectory = Get( ).m_TemporaryDirectory;
+		if ( TemporaryDirectory.empty( ) ) 
+			return;
+		UPC_TRACE( L"remove temporary directories [%s]", TemporaryDirectory.c_str( ) );
+		std::filesystem::remove_all( TemporaryDirectory, nothrow_ );
+	}
+	bool CreateTemplateInTemporaryDirectory() {
+		removeTemporaryDirectories( );
+		std::atexit( removeTemporaryDirectories );
+		std::at_quick_exit( removeTemporaryDirectories );</span>
+		try {
+<span style = "background-color:#fdd">			detail_::Dir RootDir = FileSystem::createTemporaryRootDirectory( m_TemporaryDirectory );
+			std::string UProjectFullFilename = "TP_devTpl.uproject";
+			write_( RootDir, UProjectFullFilename );</span>
+
+<span style = "background-color:#fdd">			m_UProjectFullFilename = RootDir.getDirectoryPath( ) / UProjectFullFilename;
+			UPC_TRACE( L"DevTlp [%s]", m_UProjectFullFilename.c_str( ) );
+			return true;
+		} catch(const std::exception &amp;) {
+			m_TemporaryDirectory.clear( );
+		}
+		return false;
+	}
+	std::wstring getFullFilename( ) const {
+		return m_UProjectFullFilename;
+	}</span>
+};
+}} // namespace prj_3d::UePrjCreator</pre>
+        <hr />
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th align="center">
+                        <small>Generated by</small>
+                        <a href="https://github.com/OpenCppCoverage/OpenCppCoverage/releases">
+                            <strong>OpenCppCoverage (Version: 0.9.9.0)</strong>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </body>
+</html>
