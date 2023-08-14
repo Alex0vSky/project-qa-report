@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+  <cppcheck version="2.11" />
+  <errors>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\CoreMinimal.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\CoreMinimal.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="70" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\GameProjectGeneration\\Public\\GameProjectUtils.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\GameProjectGeneration\\Public\\GameProjectUtils.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="75" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\HardwareTargeting\\Public\\HardwareTargetingSettings.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\HardwareTargeting\\Public\\HardwareTargetingSettings.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="76" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\Modules\\ModuleManager.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\Modules\\ModuleManager.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="77" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\Misc\\CommandLine.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\Misc\\CommandLine.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="78" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\HAL\\PlatformOutputDevices.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\HAL\\PlatformOutputDevices.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="79" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\Misc\\CoreDelegates.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\Misc\\CoreDelegates.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="80" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\Misc\\ConfigCacheIni.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\Misc\\ConfigCacheIni.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="81" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\ApplicationCore\\Public\\Windows\\WindowsPlatformApplicationMisc.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\ApplicationCore\\Public\\Windows\\WindowsPlatformApplicationMisc.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="85" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\ApplicationCore\\Public\\HAL\\PlatformApplicationMisc.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\ApplicationCore\\Public\\HAL\\PlatformApplicationMisc.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="86" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\Misc\\OutputDeviceHelper.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\Misc\\OutputDeviceHelper.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="87" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Slate\\Public\\Framework\\Application\\SlateApplication.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Slate\\Public\\Framework\\Application\\SlateApplication.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="94" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\AddContentDialog\\Private\\IContentSource.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\AddContentDialog\\Private\\IContentSource.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="97" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\GameProjectGeneration\\Classes\\TemplateProjectDefs.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\GameProjectGeneration\\Classes\\TemplateProjectDefs.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="101" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\HAL\\FileManager.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Runtime\\Core\\Public\\HAL\\FileManager.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="103" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\GameProjectGeneration\\Classes\\DefaultTemplateProjectDefs.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\GameProjectGeneration\\Classes\\DefaultTemplateProjectDefs.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="110" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\GameProjectGeneration\\Public\\ClassTemplateEditorSubsystem.h&quot; not found." verbose="Include file: &quot;C:/Ue\\Engine\\Source\\Editor\\GameProjectGeneration\\Public\\ClassTemplateEditorSubsystem.h&quot; not found.">
+      <location file="src\_pch\stdafx.h" line="111" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;ThirdParty\magic_enum.hpp&quot; not found." verbose="Include file: &quot;ThirdParty\magic_enum.hpp&quot; not found.">
+      <location file="src\_pch\argparse.h" line="2" column="0" />
+    </error>
+    <error id="missingInclude" severity="information" msg="Include file: &quot;ThirdParty\argparse.hpp&quot; not found." verbose="Include file: &quot;ThirdParty\argparse.hpp&quot; not found.">
+      <location file="src\_pch\argparse.h" line="6" column="0" />
+    </error>
+    <error id="ignoredReturnValue" severity="warning" msg="Return value of function std::at_quick_exit() is not used." verbose="Return value of function std::at_quick_exit() is not used." cwe="252" file0="src/EntryPoint.cpp">
+      <location file="src\DevTpl.h" line="211" column="8" />
+      <symbol>std::at_quick_exit</symbol>
+    </error>
+    <error id="noExplicitConstructor" severity="style" msg="Class 'Dir' has a constructor with 1 argument that is not explicit." verbose="Class 'Dir' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\FileSystem.h" line="8" column="2" />
+      <symbol>Dir</symbol>
+    </error>
+    <error id="leakReturnValNotUsed" severity="error" msg="Return value of allocation function 'LoadLibraryA' is not stored." verbose="Return value of allocation function 'LoadLibraryA' is not stored." cwe="771" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="101" column="4" />
+      <symbol>LoadLibraryA</symbol>
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\CmdLiner.h" line="65" column="4" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\DevTpl.h" line="205" column="3" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\DevTpl.h" line="218" column="4" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="46" column="4" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="49" column="3" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="58" column="3" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="65" column="3" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="69" column="2" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="80" column="3" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="95" column="2" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="104" column="3" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="109" column="3" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="128" column="4" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="132" column="2" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\UeLocator.h" line="29" column="4" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\UeLocator.h" line="30" column="4" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\UeLocator.h" line="31" column="4" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\UeLocator.h" line="34" column="3" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\UeLocator.h" line="36" column="4" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\UeLocator.h" line="39" column="4" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\UeLocator.h" line="41" column="5" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\UeLocator.h" line="47" column="4" />
+    </error>
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\UeLocator.h" line="51" column="3" />
+    </error>
+    <error id="constVariablePointer" severity="style" msg="Variable 'TemplateDefs' can be declared as pointer to const" verbose="Variable 'TemplateDefs' can be declared as pointer to const" cwe="398" file0="src/EntryPoint.cpp">
+      <location file="src\Main.h" line="144" column="25" info="Variable 'TemplateDefs' can be declared as pointer to const" />
+      <symbol>TemplateDefs</symbol>
+    </error>
+    <error id="stlcstrStream" severity="performance" msg="Passing the result of c_str() to a stream is slow and redundant." verbose="Passing a const char* to a stream requires a call to strlen(). Solve that by directly passing the string." cwe="704" file0="src/EntryPoint.cpp">
+      <location file="src\FileSystem.h" line="19" column="8" />
+    </error>
+    <error id="stlcstrParam" severity="performance" msg="Passing the result of c_str() to a function that takes std::string as argument no. 1 is slow and redundant." verbose="The conversion from const char* as returned by c_str() to std::string creates an unnecessary string copy or length calculation. Solve that by directly passing the string." cwe="704" file0="src/EntryPoint.cpp">
+      <location file="src\DevTpl.h" line="9" column="11" />
+    </error>
+    <error id="unmatchedSuppression" severity="information" msg="Unmatched suppression: missingInclude" verbose="Unmatched suppression: missingInclude">
+      <location file="*\SynCtrl.h" line="0" column="0" />
+    </error>
+    <error id="unmatchedSuppression" severity="information" msg="Unmatched suppression: preprocessorErrorDirective" verbose="Unmatched suppression: preprocessorErrorDirective">
+      <location file="*\SynCtrl.h" line="0" column="0" />
+    </error>
+  </errors>
+  <Arguments> --std=c++17 --platform=win32A --library=microsoft_sal --library=windows --enable=all -q --xml  -I "resource" -I "src" -I "ThirdParty\SynCOMAPIv1_0\Include" -DDECLSPEC_IMPORT=__declspec(import) -D_X86_=1 -D_M_HYBRID_X86_ARM64=1 --suppress=missingIncludeSystem --suppress=missingInclude:*\SynCtrl.h --suppress=preprocessorErrorDirective:*\SynCtrl.h src</Arguments>
+</results>

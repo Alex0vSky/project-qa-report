@@ -1,0 +1,89 @@
+Version metrixpp/metrix++/metrixplusplus from 'git show --summary': [
+commit 78dc5380de9aaa3d615f8be6c84e90cb2ae0d90b
+Merge: 6a7c461 3671b3d
+Author: Andrey <avkonst@gmail.com>
+Date:   Sun Dec 18 11:21:30 2022 +1300
+
+    Merge pull request #56 from thom-sch/Issue43_UnicodeDecodeError
+    
+    Detect correct file coding
+
+]
+D:/a/UePrjCreator/UePrjCreator/src:: info: Overall metrics for 'std.code.complexity:cyclomatic' metric
+	Average        : 1.29268293
+	Minimum        : 0
+	Maximum        : 16
+	Total          : 53.0
+	Distribution   : 41 regions in total (including 0 suppressed)
+	  Metric value : Ratio : R-sum : Number of regions
+	             0 : 0.585 : 0.585 : 24	||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+	             1 : 0.195 : 0.780 :  8	|||||||||||||||||||
+	             2 : 0.073 : 0.854 :  3	|||||||
+	             3 : 0.049 : 0.902 :  2	||||
+	             4 : 0.024 : 0.927 :  1	||
+	             5 : 0.024 : 0.951 :  1	||
+	             8 : 0.024 : 0.976 :  1	||
+	            16 : 0.024 : 1.000 :  1	||
+
+D:/a/UePrjCreator/UePrjCreator/src:: info: Overall metrics for 'std.code.lines:code' metric
+	Average        : 7.68141593
+	Minimum        : 0
+	Maximum        : 163
+	Total          : 868.0
+	Distribution   : 113 regions in total (including 0 suppressed)
+	  Metric value : Ratio : R-sum : Number of regions
+	             0 : 0.150 : 0.150 :  17	|||||||||||||||
+	           1-2 : 0.248 : 0.398 :  28	||||||||||||||||||||||||
+	             3 : 0.257 : 0.655 :  29	|||||||||||||||||||||||||
+	             4 : 0.080 : 0.735 :   9	|||||||
+	             5 : 0.044 : 0.779 :   5	||||
+	             6 : 0.053 : 0.832 :   6	|||||
+	             7 : 0.009 : 0.841 :   1	
+	             8 : 0.018 : 0.858 :   2	|
+	            10 : 0.018 : 0.876 :   2	|
+	            12 : 0.009 : 0.885 :   1	
+	            13 : 0.009 : 0.894 :   1	
+	            14 : 0.009 : 0.903 :   1	
+	            16 : 0.027 : 0.929 :   3	||
+	            18 : 0.009 : 0.938 :   1	
+	            21 : 0.009 : 0.947 :   1	
+	            28 : 0.009 : 0.956 :   1	
+	            30 : 0.009 : 0.965 :   1	
+	            57 : 0.009 : 0.973 :   1	
+	            61 : 0.009 : 0.982 :   1	
+	       122-163 : 0.018 : 1.000 :   2	|
+
+D:/a/UePrjCreator/UePrjCreator/src:: info: Overall metrics for 'std.code.lines:comments' metric
+	Average        : 0.9380531
+	Minimum        : 0
+	Maximum        : 22
+	Total          : 106.0
+	Distribution   : 113 regions in total (including 0 suppressed)
+	  Metric value : Ratio : R-sum : Number of regions
+	             0 : 0.619 : 0.619 :  70	|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+	             1 : 0.301 : 0.920 :  34	||||||||||||||||||||||||||||||
+	             2 : 0.018 : 0.938 :   2	|
+	             3 : 0.009 : 0.947 :   1	
+	             5 : 0.018 : 0.965 :   2	|
+	             7 : 0.009 : 0.973 :   1	
+	            13 : 0.018 : 0.991 :   2	|
+	            22 : 0.009 : 1.000 :   1	
+
+D:/a/UePrjCreator/UePrjCreator/src:: info: Directory content:
+	Directory      : _fromBatch
+	Directory      : _pch
+	File           : CmdLiner.h
+	File           : Constants.h
+	File           : DelayloadStaticVar.h
+	File           : DevTpl.h
+	File           : EntryPoint.cpp
+	File           : FOutputDeviceStdOutput.h
+	File           : FileSystem.h
+	File           : Log.h
+	File           : Main.h
+	File           : Registry.h
+	File           : StringConvert.h
+	File           : UeLocator.h
+	File           : Version.h
+
+
