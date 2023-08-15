@@ -1,61 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<testsuite errors="0" failures="32" name="cpplint" tests="32">
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\CmdLiner.h">
-    <failure>7: public: should be indented +1 space inside class CmdLiner [whitespace/indent] [3]
-9: Missing space before { [whitespace/braces] [5]
-43: An else should appear on the same line as the preceding } [whitespace/newline] [4]
-43: If an else has a brace on one side, it should have it on both [readability/braces] [5]</failure>
-  </testcase>
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\Constants.h">
-    <failure>5: Redundant blank line at the start of a code block should be deleted. [whitespace/blank_line] [2]
-46: Redundant blank line at the end of a code block should be deleted. [whitespace/blank_line] [3]</failure>
-  </testcase>
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\DelayloadStaticVar.h">
-    <failure>9: Missing space before { [whitespace/braces] [5]</failure>
-  </testcase>
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\DevTpl.h">
-    <failure>195: public: should be indented +1 space inside class DevTpl [whitespace/indent] [3]</failure>
-  </testcase>
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\EntryPoint.cpp">
-    <failure>2: Include the directory when naming header files [build/include_subdir] [4]</failure>
-  </testcase>
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\FOutputDeviceStdOutput.h">
-    <failure>6: public: should be indented +1 space inside class FOutputDeviceStdOutput [whitespace/indent] [3]
-9: Missing space before { [whitespace/braces] [5]
-11: "virtual" is redundant since function is already declared as "override" [readability/inheritance] [4]
-15: "virtual" is redundant since function is already declared as "override" [readability/inheritance] [4]</failure>
-  </testcase>
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\FileSystem.h">
-    <failure>8: Single-parameter constructors should be marked explicit. [runtime/explicit] [5]
-9: Missing space before { [whitespace/braces] [5]
-11: public: should be indented +1 space inside class Dir [whitespace/indent] [3]
-35: Missing space before { [whitespace/braces] [5]</failure>
-  </testcase>
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\Main.h">
-    <failure>64: Using C-style cast.  Use static_cast&lt;int&gt;(...) instead [readability/casting] [4]
-65: Lines should be &lt;= 100 characters long [whitespace/line_length] [2]</failure>
-  </testcase>
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\Registry.h">
-    <failure>6: protected: should be indented +1 space inside class BaseReg [whitespace/indent] [3]
-17: public: should be indented +1 space inside class BaseReg [whitespace/indent] [3]
-52: public: should be indented +1 space inside class Reg [whitespace/indent] [3]</failure>
-  </testcase>
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\StringConvert.h">
-    <failure>12: { should almost always be at the end of the previous line [whitespace/braces] [4]
-12: Missing space before { [whitespace/braces] [5]
-20: Using C-style cast.  Use static_cast&lt;int&gt;(...) instead [readability/casting] [4]
-31: Missing username in TODO; it should look like "// TODO(my_username): Stuff." [readability/todo] [2]</failure>
-  </testcase>
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\UeLocator.h">
-    <failure>18: { should almost always be at the end of the previous line [whitespace/braces] [4]
-18: Missing space before { [whitespace/braces] [5]
-46: An else should appear on the same line as the preceding } [whitespace/newline] [4]
-46: If an else has a brace on one side, it should have it on both [readability/braces] [5]
-54: Redundant blank line at the end of a code block should be deleted. [whitespace/blank_line] [3]</failure>
-  </testcase>
-  <testcase name="D:\a\UePrjCreator\UePrjCreator\src\Version.h">
-    <failure>1: Line contains invalid UTF-8 (or Unicode replacement character). [readability/utf8] [5]</failure>
-  </testcase>
+<testsuite errors="0" failures="0" name="cpplint" tests="1">
+  <testcase name="passed" />
   <Arguments>--linelength=100 --filter=-whitespace/tab,-whitespace/end_of_line,-whitespace/parens,-readability/namespace,-whitespace/comments,-build/include_what_you_use,-runtime/references --exclude=D:\a\UePrjCreator\UePrjCreator\src\_pch\ --exclude=D:\a\UePrjCreator\UePrjCreator\src\_fromBatch\ --recursive --output=junit D:\a\UePrjCreator\UePrjCreator\src</Arguments>
   <Version>1.6.1</Version>
 </testsuite>

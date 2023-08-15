@@ -26,10 +26,10 @@ D:/a/UePrjCreator/UePrjCreator/src:: info: Overall metrics for 'std.code.complex
 	            16 : 0.024 : 1.000 :  1	||
 
 D:/a/UePrjCreator/UePrjCreator/src:: info: Overall metrics for 'std.code.lines:code' metric
-	Average        : 7.68141593
+	Average        : 7.67256637
 	Minimum        : 0
 	Maximum        : 163
-	Total          : 868.0
+	Total          : 867.0
 	Distribution   : 113 regions in total (including 0 suppressed)
 	  Metric value : Ratio : R-sum : Number of regions
 	             0 : 0.150 : 0.150 :  17	|||||||||||||||
@@ -47,22 +47,22 @@ D:/a/UePrjCreator/UePrjCreator/src:: info: Overall metrics for 'std.code.lines:c
 	            16 : 0.027 : 0.929 :   3	||
 	            18 : 0.009 : 0.938 :   1	
 	            21 : 0.009 : 0.947 :   1	
-	            28 : 0.009 : 0.956 :   1	
+	            27 : 0.009 : 0.956 :   1	
 	            30 : 0.009 : 0.965 :   1	
-	            57 : 0.009 : 0.973 :   1	
+	            56 : 0.009 : 0.973 :   1	
 	            61 : 0.009 : 0.982 :   1	
-	       122-163 : 0.018 : 1.000 :   2	|
+	       123-163 : 0.018 : 1.000 :   2	|
 
 D:/a/UePrjCreator/UePrjCreator/src:: info: Overall metrics for 'std.code.lines:comments' metric
-	Average        : 0.9380531
+	Average        : 0.94690265
 	Minimum        : 0
 	Maximum        : 22
-	Total          : 106.0
+	Total          : 107.0
 	Distribution   : 113 regions in total (including 0 suppressed)
 	  Metric value : Ratio : R-sum : Number of regions
 	             0 : 0.619 : 0.619 :  70	|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-	             1 : 0.301 : 0.920 :  34	||||||||||||||||||||||||||||||
-	             2 : 0.018 : 0.938 :   2	|
+	             1 : 0.292 : 0.912 :  33	|||||||||||||||||||||||||||||
+	             2 : 0.027 : 0.938 :   3	||
 	             3 : 0.009 : 0.947 :   1	
 	             5 : 0.018 : 0.965 :   2	|
 	             7 : 0.009 : 0.973 :   1	
@@ -70,7 +70,6 @@ D:/a/UePrjCreator/UePrjCreator/src:: info: Overall metrics for 'std.code.lines:c
 	            22 : 0.009 : 1.000 :   1	
 
 D:/a/UePrjCreator/UePrjCreator/src:: info: Directory content:
-	Directory      : _fromBatch
 	Directory      : _pch
 	File           : CmdLiner.h
 	File           : Constants.h
