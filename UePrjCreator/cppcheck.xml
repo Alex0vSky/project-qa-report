@@ -2,106 +2,93 @@
 <results version="2">
   <cppcheck version="2.11" />
   <errors>
-    <error id="missingInclude" severity="information" msg="Include file: &quot;stdafx.h&quot; not found." verbose="Include file: &quot;stdafx.h&quot; not found.">
-      <location file="src\EntryPoint.cpp" line="2" column="0" />
-    </error>
-    <error id="ignoredReturnValue" severity="warning" msg="Return value of function std::at_quick_exit() is not used." verbose="Return value of function std::at_quick_exit() is not used." cwe="252" file0="src/EntryPoint.cpp">
-      <location file="src\DevTpl.h" line="211" column="8" />
+    <error id="ignoredReturnValue" severity="warning" msg="Return value of function std::at_quick_exit() is not used." verbose="Return value of function std::at_quick_exit() is not used." cwe="252" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\DevTpl.h" line="211" column="8" />
       <symbol>std::at_quick_exit</symbol>
     </error>
-    <error id="leakReturnValNotUsed" severity="error" msg="Return value of allocation function 'LoadLibraryA' is not stored." verbose="Return value of allocation function 'LoadLibraryA' is not stored." cwe="771" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="102" column="4" />
+    <error id="leakReturnValNotUsed" severity="error" msg="Return value of allocation function 'LoadLibraryA' is not stored." verbose="Return value of allocation function 'LoadLibraryA' is not stored." cwe="771" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="102" column="4" />
       <symbol>LoadLibraryA</symbol>
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\CmdLiner.h" line="64" column="4" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\CmdLiner.h" line="64" column="4" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\DevTpl.h" line="205" column="3" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\DevTpl.h" line="205" column="3" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\DevTpl.h" line="218" column="4" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\DevTpl.h" line="218" column="4" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="46" column="4" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="46" column="4" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="49" column="3" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="49" column="3" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="58" column="3" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="58" column="3" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="65" column="3" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="65" column="3" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="70" column="2" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="70" column="2" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="81" column="3" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="81" column="3" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="96" column="2" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="96" column="2" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="105" column="3" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="105" column="3" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="110" column="3" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="110" column="3" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="129" column="4" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="129" column="4" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="133" column="2" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="133" column="2" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\UeLocator.h" line="29" column="4" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\UeLocator.h" line="29" column="4" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\UeLocator.h" line="30" column="4" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\UeLocator.h" line="30" column="4" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\UeLocator.h" line="31" column="4" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\UeLocator.h" line="31" column="4" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\UeLocator.h" line="34" column="3" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\UeLocator.h" line="34" column="3" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\UeLocator.h" line="36" column="4" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\UeLocator.h" line="36" column="4" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\UeLocator.h" line="39" column="4" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\UeLocator.h" line="39" column="4" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\UeLocator.h" line="41" column="5" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\UeLocator.h" line="41" column="5" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\UeLocator.h" line="46" column="4" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\UeLocator.h" line="46" column="4" />
     </error>
-    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\UeLocator.h" line="50" column="3" />
+    <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected." cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\UeLocator.h" line="50" column="3" />
     </error>
-    <error id="constVariablePointer" severity="style" msg="Variable 'TemplateDefs' can be declared as pointer to const" verbose="Variable 'TemplateDefs' can be declared as pointer to const" cwe="398" file0="src/EntryPoint.cpp">
-      <location file="src\Main.h" line="145" column="25" info="Variable 'TemplateDefs' can be declared as pointer to const" />
+    <error id="constVariablePointer" severity="style" msg="Variable 'TemplateDefs' can be declared as pointer to const" verbose="Variable 'TemplateDefs' can be declared as pointer to const" cwe="398" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\Main.h" line="145" column="25" info="Variable 'TemplateDefs' can be declared as pointer to const" />
       <symbol>TemplateDefs</symbol>
     </error>
-    <error id="stlcstrStream" severity="performance" msg="Passing the result of c_str() to a stream is slow and redundant." verbose="Passing a const char* to a stream requires a call to strlen(). Solve that by directly passing the string." cwe="704" file0="src/EntryPoint.cpp">
-      <location file="src\FileSystem.h" line="19" column="8" />
+    <error id="stlcstrStream" severity="performance" msg="Passing the result of c_str() to a stream is slow and redundant." verbose="Passing a const char* to a stream requires a call to strlen(). Solve that by directly passing the string." cwe="704" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\FileSystem.h" line="19" column="8" />
     </error>
-    <error id="stlcstrParam" severity="performance" msg="Passing the result of c_str() to a function that takes std::string as argument no. 1 is slow and redundant." verbose="The conversion from const char* as returned by c_str() to std::string creates an unnecessary string copy or length calculation. Solve that by directly passing the string." cwe="704" file0="src/EntryPoint.cpp">
-      <location file="src\DevTpl.h" line="9" column="11" />
-    </error>
-    <error id="missingInclude" severity="information" msg="Include file: &quot;stdafx.h&quot; not found." verbose="Include file: &quot;stdafx.h&quot; not found.">
-      <location file="src\_pch\stdafx.cpp" line="2" column="0" />
-    </error>
-    <error id="unmatchedSuppression" severity="information" msg="Unmatched suppression: missingIncludeSystem" verbose="Unmatched suppression: missingIncludeSystem" />
-    <error id="unmatchedSuppression" severity="information" msg="Unmatched suppression: missingInclude" verbose="Unmatched suppression: missingInclude">
-      <location file="*\SynCtrl.h" line="0" column="0" />
-    </error>
-    <error id="unmatchedSuppression" severity="information" msg="Unmatched suppression: preprocessorErrorDirective" verbose="Unmatched suppression: preprocessorErrorDirective">
-      <location file="*\SynCtrl.h" line="0" column="0" />
+    <error id="stlcstrParam" severity="performance" msg="Passing the result of c_str() to a function that takes std::string as argument no. 1 is slow and redundant." verbose="The conversion from const char* as returned by c_str() to std::string creates an unnecessary string copy or length calculation. Solve that by directly passing the string." cwe="704" file0="D:/a/UePrjCreator/UePrjCreator/src/EntryPoint.cpp">
+      <location file="D:\a\UePrjCreator\UePrjCreator\src\DevTpl.h" line="9" column="11" />
     </error>
   </errors>
-  <Arguments> --std=c++17 --platform=win32A --library=microsoft_sal --library=windows --enable=all -q --xml  -I "resource" -I "src" -I "ThirdParty\SynCOMAPIv1_0\Include" -DDECLSPEC_IMPORT=__declspec(import) -D_X86_=1 -D_M_HYBRID_X86_ARM64=1 --suppress=missingIncludeSystem --suppress=missingInclude:*\SynCtrl.h --suppress=preprocessorErrorDirective:*\SynCtrl.h src</Arguments>
+  <Arguments> --language=c++ --std=c++17 --platform=win64 --library=microsoft_sal --library=windows --enable=all --force --inline-suppr -q --xml  -I "D:\a\UePrjCreator\UePrjCreator\src\_pch\_fromBatch" -I "D:\a\UePrjCreator\UePrjCreator\src\_pch" -I "D:\a\UePrjCreator\UePrjCreator\src" -DA0S_cppcheck__ --suppress=missingInclude:D:\a\UePrjCreator\UePrjCreator\src\_pch\argparse.h --suppress=missingInclude:D:\a\UePrjCreator\UePrjCreator\src\_pch\_fromBatch\stdafx.h --suppress=unusedFunction:D:\a\UePrjCreator\UePrjCreator\src\Main.h:22 --suppress=missingIncludeSystem --suppress=unmatchedSuppression D:\a\UePrjCreator\UePrjCreator\src</Arguments>
 </results>
