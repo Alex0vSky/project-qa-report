@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>GameLoopPart.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+    <body onload="prettyPrint()">
+        <h4></h4>
+        <pre class="prettyprint lang-cpp linenums">
+// Dx/Spec/D12/GameLoopPart.h - common behavior in run for DirectX 12 game loop
+#pragma once
+namespace prj_3d::HelloWinHlsl::Dx::Spec::D12 {
+class GameLoopPart : virtual public GameLoop::detail_::ABaseWndProcHolderAware&lt;DxVer::v12&gt; {
+	using ABaseWndProcHolderAware&lt;DxVer::v12&gt;::ABaseWndProcHolderAware;
+
+ protected:
+	uptr&lt; DirectX::GraphicsMemory &gt; m_graphicsMemory;
+	sptr&lt; Dx::Spec::D12::Waiter &gt; m_psoWaiter;
+	sptr&lt; Dx::Spec::D12::Resizer &gt; m_psoResizer;
+	CPtr&lt; ID3D12RootSignature &gt; m_pcRootSignature;
+	uptr&lt; Dx::Spec::D12::SetterRootSignature &gt; m_puSetterRootSignature;
+	CPtr&lt; ID3D12PipelineState &gt; m_pcPipelineState;
+	CPtr&lt; ID3D12GraphicsCommandList &gt; m_pc_CommandList;
+
+	uptr&lt; ABaseWndProcHolderAware::mutex_t &gt; m_puMutex;
+
+<span style = "background-color:#fdd">	void beforeInitialize() {
+		m_pcRootSignature = m_stCtx -&gt;m_psstDxCtx -&gt;m_initialRootSignature;
+		m_psoWaiter = std::make_shared&lt; Dx::Spec::D12::Waiter &gt;( </span>
+				m_stCtx -&gt;m_psstDxCtx -&gt;detail_.m_pcFence
+				, m_stCtx -&gt;m_psstDxCtx -&gt;detail_.m_hFenceEvent
+				, m_stCtx -&gt;m_psstDxCtx -&gt;m_pcCommandQueue
+				, m_stCtx -&gt;m_psstDxCtx -&gt;m_pcDxgiSwapChain
+				, m_stCtx -&gt;m_psstDxCtx -&gt;detail_.m_aruFenceValues
+				, m_stCtx -&gt;m_psstDxCtx -&gt;detail_.m_uFrameIndex
+			);
+<span style = "background-color:#fdd">		m_psoResizer = std::make_shared&lt; Dx::Spec::D12::Resizer &gt;( </span>
+				m_stCtx -&gt;m_psstDxCtx -&gt;detail_.m_viewport
+				, m_stCtx -&gt;m_psstDxCtx -&gt;detail_.m_scissorRect
+				, m_stCtx -&gt;m_psstDxCtx -&gt;detail_.m_renderTargets
+			);
+<span style = "background-color:#fdd">		for ( const auto &amp;var : m_stCtx -&gt;m_psstDxCtx -&gt;detail_.m_renderTargets )
+			var.~CPtr( );</span>
+
+<span style = "background-color:#fdd">		m_puoWnd -&gt;setDxCtx( m_stCtx -&gt;m_psstDxCtx, m_puMutex.get( ), m_psoWaiter.get( ), m_psoResizer.get( ) );</span>
+
+<span style = "background-color:#fdd">		m_puSetterRootSignature = std::make_unique&lt; Dx::Spec::D12::SetterRootSignature &gt;( std::addressof( m_pcRootSignature ) );
+        m_puoAdjustDxAux = Dx::FactoryAdjustAux&lt;DxVer::v12&gt;::create( </span>
+				m_stCtx -&gt;m_psstDxCtx
+				, m_psoWaiter.get( )
+				, *m_puSetterRootSignature
+			);
+
+<span style = "background-color:#fdd">	}</span>
+
+<span style = "background-color:#fdd">	virtual ~GameLoopPart() {
+		m_psoWaiter -&gt;waitForGpu( );
+		if ( !m_stCtx -&gt;m_psstDxCtx -&gt;detail_.m_bTearingSupport ) {</span>
+			// Fullscreen state should always be false before exiting the app.
+<span style = "background-color:#fdd">			Sys::Hr hr = m_stCtx -&gt;m_psstDxCtx -&gt;m_pcDxgiSwapChain -&gt;SetFullscreenState( FALSE, nullptr );
+		}
+	}</span>
+
+<span style = "background-color:#fdd">	void afterAdjust() {
+		m_pcPipelineState = m_puoAdjustDxAux -&gt;getPipelineState( );
+		m_pc_CommandList = m_puoAdjustDxAux -&gt;getCommandList( );
+		m_psoDynamicData -&gt;setCommandList( m_pc_CommandList );
+		if ( m_puoDrawAuxFps ) {
+			m_puoDrawAuxFps -&gt;setDx12Viewport( m_psoResizer -&gt;getViewport( ) );
+			m_puoDrawAuxFps -&gt;setDx12CommandList( m_pc_CommandList );</span>
+		}
+<span style = "background-color:#fdd">		m_graphicsMemory = std::make_unique&lt; DirectX::GraphicsMemory &gt;( m_stCtx -&gt;m_psstDxCtx -&gt;m_pcD3dDevice12.Get( ) );</span>
+
+<span style = "background-color:#fdd">		this -&gt;setCallbackAfterPresent(
+				[this]() {
+					m_psoWaiter -&gt;MoveToNextFrame( );</span>
+
+					// Not mandatory for fps draw
+<span style = "background-color:#fdd">					m_graphicsMemory -&gt;Commit( m_stCtx -&gt;m_psstDxCtx -&gt;m_pcCommandQueue.Get( ) );
+				}</span>
+			);
+<span style = "background-color:#fdd">		this -&gt;setCallbackBeforeRender(
+				[this]() {
+					Sys::Hr hr;</span>
+					// Render the scene. //part void D3D12HelloTriangle::OnRender() ...
+					//beg void D3D12HelloTriangle::PopulateCommandList() {
+					// Command list allocators can only be reset when the associated 
+					// command lists have finished execution on the GPU; apps should use 
+					// fences to determine GPU execution progress.
+<span style = "background-color:#fdd">					UINT frameIndex = m_psoWaiter -&gt;get_frameIndex( );
+					hr = m_stCtx -&gt;m_psstDxCtx -&gt;m_arpcCommandAllocators[ frameIndex ] -&gt;Reset( );</span>
+
+					// However, when ExecuteCommandList() is called on a particular command 
+					// list, that command list can then be reset at any time and must be before 
+					// re-recording.
+					// FullGPU
+<span style = "background-color:#fdd">					hr = m_pc_CommandList -&gt;Reset(</span>
+							m_stCtx -&gt;m_psstDxCtx -&gt;m_arpcCommandAllocators[ frameIndex ].Get( )
+							, m_pcPipelineState.Get( )
+						);
+
+					// Set necessary state.
+<span style = "background-color:#fdd">					m_pc_CommandList -&gt;SetGraphicsRootSignature( m_pcRootSignature.Get( ) );
+					m_pc_CommandList -&gt;RSSetViewports( 1, &amp;m_psoResizer -&gt;getViewport( ) );
+					m_pc_CommandList -&gt;RSSetScissorRects( 1, &amp;m_psoResizer -&gt;getScissorRect( ) );</span>
+					// Indicate that the back buffer will be used as a render target.
+<span style = "background-color:#fdd">					CD3DX12_RESOURCE_BARRIER rb1 = CD3DX12_RESOURCE_BARRIER::Transition(</span>
+							m_psoResizer -&gt;getRenderTargets( )[ m_psoWaiter -&gt;get_frameIndex( ) ].Get( )
+							, D3D12_RESOURCE_STATE_PRESENT
+							, D3D12_RESOURCE_STATE_RENDER_TARGET
+						);
+<span style = "background-color:#fdd">					m_pc_CommandList -&gt;ResourceBarrier( 1, &amp;rb1 );</span>
+
+<span style = "background-color:#fdd">					CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle( </span>
+							m_stCtx -&gt;m_psstDxCtx -&gt;m_rtvHeap -&gt;GetCPUDescriptorHandleForHeapStart( )
+							, m_psoWaiter -&gt;get_frameIndex( )
+							, m_stCtx -&gt;m_psstDxCtx -&gt;m_rtvDescriptorSize 
+						);
+<span style = "background-color:#fdd">					m_pc_CommandList -&gt;OMSetRenderTargets( 1, &amp;rtvHandle, FALSE, nullptr );
+					m_psoDynamicData -&gt;setRtvHandle( rtvHandle );
+					m_psoDynamicData -&gt;setWindowed( m_puoWnd -&gt;isWindowed( ) );
+					m_psoDynamicData -&gt;setWindowHandle( m_puoWnd -&gt;getWndToken( ).m_hWnd );
+				}</span>
+			);
+<span style = "background-color:#fdd">		this -&gt;setCallbackAfterRender(
+				[this]() {
+					Sys::Hr hr;</span>
+					// Indicate that the back buffer will now be used to present.
+<span style = "background-color:#fdd">					CD3DX12_RESOURCE_BARRIER rb2 = CD3DX12_RESOURCE_BARRIER::Transition(</span>
+							m_psoResizer -&gt;getRenderTargets( )[ m_psoWaiter -&gt;get_frameIndex( ) ].Get( )
+							, D3D12_RESOURCE_STATE_RENDER_TARGET
+							, D3D12_RESOURCE_STATE_PRESENT
+						);
+<span style = "background-color:#fdd">					m_pc_CommandList -&gt;ResourceBarrier( 1, &amp;rb2 );
+					hr = m_pc_CommandList -&gt;Close( );</span>
+					//} end void D3D12HelloTriangle::PopulateCommandList()
+
+					// Execute the command list.
+<span style = "background-color:#fdd">					ID3D12CommandList* ppCommandLists[] = { m_pc_CommandList.Get( ) };
+					m_stCtx -&gt;m_psstDxCtx -&gt;m_pcCommandQueue -&gt;ExecuteCommandLists( _countof( ppCommandLists ), ppCommandLists );
+				}</span>
+			);		
+<span style = "background-color:#fdd">	}</span>
+};
+} // namespace prj_3d::HelloWinHlsl::Dx::Spec::D12</pre>
+        <hr />
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th align="center">
+                        <small>Generated by</small>
+                        <a href="https://github.com/OpenCppCoverage/OpenCppCoverage/releases">
+                            <strong>OpenCppCoverage (Version: 0.9.9.0)</strong>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>Dx12CtxImpl.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+    <body onload="prettyPrint()">
+        <h4></h4>
+        <pre class="prettyprint lang-cpp linenums">
+ï»¿// Dx/Ctx/Impl/Dx12CtxImpl.h - implementation for DirectX3D version 11
+#pragma once
+namespace prj_3d::HelloWinHlsl::Dx::Ctx::Impl {
+class Dx12CtxImpl {
+public:
+	static 
+	Ty::StDxCtx_ptr&lt; DxVer::v12 &gt;
+	create(Sys::Wnd::StToken::cref_t crstWndToken, const Dx::Adapter::Dx12Adapter &amp;oAdapter) 
+<span style = "background-color:#fdd">	{
+		UINT Width = crstWndToken.m_uInitialWidth
+			, Height = crstWndToken.m_uInitialHeight;
+		float fWidth = static_cast&lt; float &gt;( Width )
+			, fHeight = static_cast&lt; float &gt;( Height );
+		LONG lWidth = static_cast&lt; LONG &gt;( Width )
+			, lHeight = static_cast&lt; LONG &gt;( Height );</span>
+
+<span style = "background-color:#fdd">		Sys::Hr hr;</span>
+
+<span style = "background-color:#fdd">		CPtr&lt; ID3D12Device &gt; pcD3dDevice12;</span>
+		HRESULT hr_;
+		// when	notebook out of electricty, used hybrid -- low consumption
+<span style = "background-color:#fdd">		hr_ = ::D3D12CreateDevice(</span>
+				oAdapter
+				, D3D_FEATURE_LEVEL::D3D_FEATURE_LEVEL_12_0
+				, IID_PPV_ARGS( pcD3dDevice12.ReleaseAndGetAddressOf( ) )
+			);
+<span style = "background-color:#fdd">		if ( FAILED( hr_ ) )
+			hr = ::D3D12CreateDevice(</span>
+					  oAdapter
+					, D3D_FEATURE_LEVEL::D3D_FEATURE_LEVEL_11_0
+					, IID_PPV_ARGS( pcD3dDevice12.ReleaseAndGetAddressOf( ) )
+				);
+<span style = "background-color:#fdd">		BOOL allowTearing = FALSE;
+		hr_ = oAdapter -&gt;CheckFeatureSupport( DXGI_FEATURE_PRESENT_ALLOW_TEARING, &amp;allowTearing, sizeof( allowTearing ) );
+		bool bTearingSupport = SUCCEEDED( hr_ ) &amp;&amp; allowTearing;</span>
+
+		// Describe and create the command queue.
+<span style = "background-color:#fdd">		CPtr&lt; ID3D12CommandQueue &gt; commandQueue;
+		D3D12_COMMAND_QUEUE_DESC queueDesc = { };
+		queueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
+		queueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
+		hr = pcD3dDevice12 -&gt;CreateCommandQueue(</span>
+				  &amp;queueDesc
+				, IID_PPV_ARGS( commandQueue.ReleaseAndGetAddressOf( ) )
+			);
+		// Describe and create the swap chain.
+	    static const UINT FrameCount = 2;
+<span style = "background-color:#fdd">		DXGI_SWAP_CHAIN_DESC1 swapChainDesc = { };
+		swapChainDesc.Width = Width;
+		swapChainDesc.Height = Height;
+		swapChainDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		swapChainDesc.BufferCount = FrameCount;
+		swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+		swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
+		swapChainDesc.SampleDesc.Count = 1;
+	    swapChainDesc.Flags = bTearingSupport ? DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING : 0;
+		CPtr&lt; IDXGISwapChain3 &gt; swapChain3;</span>
+		{
+<span style = "background-color:#fdd">			CPtr&lt; IDXGISwapChain1 &gt; swapChain1;
+			hr = oAdapter -&gt;CreateSwapChainForHwnd(</span>
+					// Swap chain needs the queue so that it can force a flush on it.
+					  commandQueue.Get( )
+					, crstWndToken.m_hWnd
+					, &amp;swapChainDesc
+					, nullptr
+					, nullptr
+					, swapChain1.ReleaseAndGetAddressOf( )
+				);
+			// Allow AltEnter to fullscreen
+			//hr = oAdapter -&gt;MakeWindowAssociation( crstWndToken.m_hWnd, 0 ); // not sent even WM_MOVE
+<span style = "background-color:#fdd">			if ( bTearingSupport )
+				hr = oAdapter -&gt;MakeWindowAssociation( crstWndToken.m_hWnd, DXGI_MWA_NO_ALT_ENTER );
+			hr = swapChain1.As( std::addressof( swapChain3 ) );
+		}</span>
+
+		// Synchronization objects.
+		UINT frameIndex;
+<span style = "background-color:#fdd">		frameIndex = swapChain3 -&gt;GetCurrentBackBufferIndex( );</span>
+
+		// Pipeline objects.
+		UINT rtvDescriptorSize;
+		// Create descriptor heaps.
+<span style = "background-color:#fdd">		CPtr&lt; ID3D12DescriptorHeap &gt; pcRtvHeap;</span>
+		{
+			// Describe and create a render target view (RTV) descriptor heap.
+<span style = "background-color:#fdd">			D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = { };
+			rtvHeapDesc.NumDescriptors = FrameCount;
+			rtvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
+			rtvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+			hr = pcD3dDevice12 -&gt;CreateDescriptorHeap(</span>
+					  &amp;rtvHeapDesc
+					, IID_PPV_ARGS( pcRtvHeap.ReleaseAndGetAddressOf( ) )
+				);
+
+<span style = "background-color:#fdd">			rtvDescriptorSize = pcD3dDevice12 -&gt;GetDescriptorHandleIncrementSize( </span>
+					D3D12_DESCRIPTOR_HEAP_TYPE_RTV 
+				);
+		}
+		// Pipeline objects.
+		//	Adventage "std::array" its simple assign
+<span style = "background-color:#fdd">		std::array&lt; CPtr&lt; ID3D12Resource &gt;, FrameCount &gt; renderTargets;</span>
+		// Create frame resources.
+		{
+
+<span style = "background-color:#fdd">			CD3DX12_CPU_DESCRIPTOR_HANDLE oRtvHandle( </span>
+					pcRtvHeap -&gt;GetCPUDescriptorHandleForHeapStart( ) 
+				);
+			// Create a RTV for each frame.
+<span style = "background-color:#fdd">			for (UINT n = 0; n &lt; FrameCount; n++) {
+				hr = swapChain3 -&gt;GetBuffer( </span>
+						  n
+						, IID_PPV_ARGS( renderTargets[ n ].ReleaseAndGetAddressOf( ) ) 
+					);
+<span style = "background-color:#fdd">				pcD3dDevice12 -&gt;CreateRenderTargetView( </span>
+						  renderTargets[ n ].Get( )
+						, nullptr
+						, oRtvHandle
+					);
+<span style = "background-color:#fdd">				oRtvHandle.Offset( 1, rtvDescriptorSize );
+			}</span>
+		}
+		// end "void D3D12HelloTriangle::LoadPipeline()"
+		
+		// beg "void D3D12HelloTriangle::LoadAssets()"
+		// Pipeline objects.
+<span style = "background-color:#fdd">		CPtr&lt; ID3D12RootSignature &gt; rootSignature;</span>
+		// Create an some root signature.
+		{ 
+			CD3DX12_ROOT_SIGNATURE_DESC rootSignatureDesc;
+<span style = "background-color:#fdd">			rootSignatureDesc.Init( </span>
+					0, nullptr
+					, 0
+					, nullptr
+					, D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT 
+				);
+
+<span style = "background-color:#fdd">			CPtr&lt; ID3DBlob &gt; signature, error;
+			hr = ::D3D12SerializeRootSignature( </span>
+					&amp;rootSignatureDesc
+					, D3D_ROOT_SIGNATURE_VERSION_1
+					, signature.ReleaseAndGetAddressOf( )
+					, error .ReleaseAndGetAddressOf( )
+				);
+<span style = "background-color:#fdd">			hr = pcD3dDevice12 -&gt;CreateRootSignature( </span>
+					0
+					, signature -&gt;GetBufferPointer( )
+					, signature -&gt;GetBufferSize( )
+					, IID_PPV_ARGS( rootSignature.ReleaseAndGetAddressOf( ) )
+				);
+<span style = "background-color:#fdd">		}</span>
+
+		// Synchronization objects.
+<span style = "background-color:#fdd">		CPtr&lt; ID3D12Fence &gt; fence;</span>
+		HANDLE fenceEvent;
+<span style = "background-color:#fdd">		std::array&lt; UINT64, FrameCount &gt; aruFenceValues = { };
+		std::array&lt; CPtr&lt; ID3D12CommandAllocator &gt;, FrameCount &gt; arpcCommandAllocators;</span>
+		// Create synchronization objects and wait until assets have been uploaded to the GPU.
+		{
+<span style = "background-color:#fdd">			hr = pcD3dDevice12 -&gt;CreateFence(</span>
+					aruFenceValues[ frameIndex ]
+					, D3D12_FENCE_FLAG_NONE
+					, IID_PPV_ARGS( fence.ReleaseAndGetAddressOf( ) )
+				);
+			
+<span style = "background-color:#fdd">			for (UINT n = 0; n &lt; FrameCount; n++) {
+				hr = pcD3dDevice12 -&gt;CreateCommandAllocator(</span>
+						D3D12_COMMAND_LIST_TYPE_DIRECT
+						, IID_PPV_ARGS( arpcCommandAllocators[ n ].ReleaseAndGetAddressOf( ) )
+					);
+<span style = "background-color:#fdd">			}</span>
+
+			// Create an event handle to use for frame synchronization.
+<span style = "background-color:#fdd">			fenceEvent = ::CreateEvent( nullptr, FALSE, FALSE, nullptr );
+			if ( !fenceEvent ) {
+				hr = HRESULT_FROM_WIN32( GetLastError( ) );
+				return { };</span>
+			}
+		}
+
+
+<span style = "background-color:#fdd">		D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = { };</span>
+		// part1 Create the pipeline state, which includes compiling and loading shaders.
+		// part1 Describe and create the graphics pipeline state object (PSO).
+<span style = "background-color:#fdd">		psoDesc.pRootSignature = rootSignature.Get( );
+		psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC( D3D12_DEFAULT );
+		psoDesc.BlendState = CD3DX12_BLEND_DESC( D3D12_DEFAULT );
+		psoDesc.DepthStencilState.DepthEnable = FALSE;
+		psoDesc.DepthStencilState.StencilEnable = FALSE;
+		psoDesc.SampleMask = UINT_MAX;</span>
+		// old -&gt;IASetPrimitiveTopology(); too there is ID3D12GraphicsCommandList::IASetPrimitiveTopology( )
+<span style = "background-color:#fdd">		psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
+		psoDesc.NumRenderTargets = 1;
+		psoDesc.RTVFormats[ 0 ] = DXGI_FORMAT_R8G8B8A8_UNORM;
+		psoDesc.SampleDesc.Count = 1;
+		return Dx::Ctx::CtxDx&lt; DxVer::v12 &gt;::z_make_shared( </span>
+				pcD3dDevice12
+				, swapChain3
+				, arpcCommandAllocators
+				, pcRtvHeap
+				, rtvDescriptorSize
+				, commandQueue
+				, psoDesc
+				, rootSignature
+				, fence
+				, fenceEvent
+				, aruFenceValues
+				, frameIndex
+				, CD3DX12_VIEWPORT( 0.0f, 0.0f, fWidth, fHeight )
+				, CD3DX12_RECT( 0, 0, lWidth, lHeight )
+				, renderTargets
+				, bTearingSupport
+			 );
+<span style = "background-color:#fdd">	}</span>
+};
+} // namespace prj_3d::HelloWinHlsl::Dx::Ctx::Impl</pre>
+        <hr />
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th align="center">
+                        <small>Generated by</small>
+                        <a href="https://github.com/OpenCppCoverage/OpenCppCoverage/releases">
+                            <strong>OpenCppCoverage (Version: 0.9.9.0)</strong>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </body>
+</html>

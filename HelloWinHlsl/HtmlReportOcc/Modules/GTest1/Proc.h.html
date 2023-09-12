@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>Proc.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+    <body onload="prettyPrint()">
+        <h4></h4>
+        <pre class="prettyprint lang-cpp linenums">
+ï»¿// Sys/Wnd/Proc.h - window procedure like object, via SetWindowLongPtrA+GetWindowLongPtrA
+#pragma once
+namespace prj_3d::HelloWinHlsl::Sys::Wnd {
+class AWndProcHolder;
+class Proc {
+	HWND m_hWnd;
+	const HINSTANCE m_hInstance;
+	IResizebleWindow *m_ifcResizebleWindow;
+<span style = "background-color:#dfd">	bool m_bMinimized = false;
+	bool m_bInSizemove = false;</span>
+
+	friend class AWndProcHolder;
+<span style = "background-color:#dfd">	void setResizebleWindow(IResizebleWindow *ifcResizebleWindow) {
+		m_ifcResizebleWindow = ifcResizebleWindow;
+	}</span>
+
+	// Message handler for about box.
+<span style = "background-color:#fdd">	static INT_PTR CALLBACK About_(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam){</span>
+		UNREFERENCED_PARAMETER( lParam );
+<span style = "background-color:#fdd">		switch ( message )</span>
+		{
+		case WM_INITDIALOG:
+<span style = "background-color:#fdd">			return (INT_PTR)TRUE;</span>
+
+		case WM_COMMAND:
+<span style = "background-color:#fdd">			if ( IDOK == LOWORD( wParam ) || IDCANCEL == LOWORD( wParam ) )</span>
+			{
+<span style = "background-color:#fdd">				EndDialog( hDlg, LOWORD( wParam ) );
+				return (INT_PTR)TRUE;</span>
+			}
+			break;
+		}
+<span style = "background-color:#fdd">		return (INT_PTR)FALSE;
+	}</span>
+
+	//  PURPOSE: Processes messages for the main window.
+<span style = "background-color:#dfd">	LRESULT messagesHandler_(UINT message, WPARAM wParam, LPARAM lParam) {</span>
+		RECT rc;
+<span style = "background-color:#dfd">		switch (message) {</span>
+		// Fullscreen message here
+		// TODO: why not real time?
+//https://stackoverflow.com/questions/28406919/redraw-window-using-directx-during-move-resize
+		case WM_MOVE:
+<span style = "background-color:#dfd">			if ( m_ifcResizebleWindow ) {
+				::OutputDebugStringA( "WM_MOVE\n" );
+				::GetWindowRect( m_hWnd, &amp;rc );
+				m_ifcResizebleWindow -&gt;onWindowSizeChanged( rc.right - rc.left, rc.bottom - rc.top );</span>
+			}
+<span style = "background-color:#dfd">			break;</span>
+		case WM_SIZE:
+<span style = "background-color:#dfd">			if ( SIZE_MINIMIZED == wParam ) {</span>
+<span style = "background-color:#fdd">				m_bMinimized = true;
+			}</span>
+<span style = "background-color:#dfd">			else if ( m_bMinimized ) {</span>
+<span style = "background-color:#fdd">				m_bMinimized = false;
+			}</span>
+<span style = "background-color:#dfd">			else if ( !m_bInSizemove &amp;&amp; m_ifcResizebleWindow ) {</span>
+				// affect only when InSeparateThread render and window message handler
+<span style = "background-color:#dfd">				::OutputDebugStringA( "WM_SIZE\n" );
+				m_ifcResizebleWindow -&gt;onWindowSizeChanged( LOWORD( lParam ), HIWORD( lParam ) );</span>
+			}
+<span style = "background-color:#dfd">			break;</span>
+		// End of resize
+		case WM_EXITSIZEMOVE:
+<span style = "background-color:#dfd">			m_bInSizemove = false;
+			if ( m_ifcResizebleWindow ) {
+				::OutputDebugStringA( "WM_EXITSIZEMOVE\n" );
+				::GetWindowRect( m_hWnd, &amp;rc );
+				m_ifcResizebleWindow -&gt;onWindowSizeChanged( rc.right - rc.left, rc.bottom - rc.top );</span>
+			}
+<span style = "background-color:#dfd">			break;</span>
+		case WM_SYSKEYDOWN:
+			// Handle ALT+ENTER:
+<span style = "background-color:#dfd">			if ((wParam == VK_RETURN) &amp;&amp; (lParam &amp; (1 &lt;&lt; 29)))</span>
+			{
+<span style = "background-color:#dfd">				if ( m_ifcResizebleWindow ) {
+					m_ifcResizebleWindow -&gt;toggleFullscreenWindow( );</span>
+				}
+<span style = "background-color:#dfd">				return 0;</span>
+			}
+			// Send all other WM_SYSKEYDOWN messages to the default WndProc.
+<span style = "background-color:#fdd">			break;</span>
+
+		case WM_COMMAND:
+			{
+<span style = "background-color:#fdd">				int wmId = LOWORD(wParam);</span>
+				// Parse the menu selections:
+<span style = "background-color:#fdd">				switch (wmId) {</span>
+				case IDM_ABOUT:
+<span style = "background-color:#fdd">					::DialogBoxParamW( m_hInstance, MAKEINTRESOURCE( IDD_ABOUTBOX ), m_hWnd, About_, 0 ); // to current executable
+					break;</span>
+				case IDM_EXIT:
+<span style = "background-color:#fdd">					::DestroyWindow( m_hWnd );
+					break;</span>
+				default:
+<span style = "background-color:#fdd">					return ::DefWindowProc( m_hWnd , message, wParam, lParam);</span>
+				}
+			}
+<span style = "background-color:#fdd">			break;</span>
+		case WM_DESTROY:
+<span style = "background-color:#fdd">			::PostQuitMessage( 0 );</span>
+			break;
+		}
+<span style = "background-color:#dfd">		return ::DefWindowProc( m_hWnd, message, wParam, lParam);
+	}</span>
+
+<span style = "background-color:#dfd">	void setHwnd_(HWND hWnd) {
+		m_hWnd = hWnd;
+	}</span>
+
+ public:
+	explicit Proc(HINSTANCE hInstance)
+<span style = "background-color:#dfd">		: m_hWnd( nullptr )
+		, m_hInstance( hInstance )
+		, m_ifcResizebleWindow( nullptr )
+	{}</span>
+	typedef uptr&lt; Proc &gt; uptr_t;
+<span style = "background-color:#fdd">	template&lt;typename... Args&gt; static auto z_make_unique(Args&amp;&amp;... args) {
+		return std::make_unique&lt; Proc &gt;( std::forward&lt;Args&gt;(args)... );
+	}</span>
+	typedef uptr_t &amp;ref_t;
+
+<span style = "background-color:#dfd">	static LRESULT systemCallback(HWND hWndMsg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+		Proc *self = nullptr;
+		if ( WM_NCCREATE == uMsg ) { </span>
+			// TODO: CREATESTRUCTW
+<span style = "background-color:#dfd">			CREATESTRUCTA *pStruct = reinterpret_cast&lt; CREATESTRUCTA * &gt;( lParam );
+			self = reinterpret_cast&lt; Proc * &gt;( pStruct -&gt;lpCreateParams );</span>
+
+<span style = "background-color:#dfd">			self -&gt;setHwnd_( hWndMsg );
+			::SetLastError( 0 );
+			LONG_PTR previousOrError = ::SetWindowLongPtrA( hWndMsg, GWLP_USERDATA, reinterpret_cast&lt; LONG_PTR &gt;( self ) );
+			if ( !previousOrError &amp;&amp; 0 != ::GetLastError( ) ) </span>
+<span style = "background-color:#fdd">				return FALSE;</span>
+<span style = "background-color:#dfd">		} else {
+			self = reinterpret_cast&lt; Proc * &gt;( ::GetWindowLongPtrA( hWndMsg, GWLP_USERDATA ) );</span>
+		}
+<span style = "background-color:#dfd">		if ( self ) 
+			return self -&gt;messagesHandler_( uMsg, wParam, lParam );</span>
+<span style = "background-color:#fdd">		return ::DefWindowProcA( hWndMsg, uMsg, wParam, lParam );</span>
+<span style = "background-color:#dfd">	}</span>
+};
+} // namespace prj_3d::HelloWinHlsl::Sys::Wnd</pre>
+        <hr />
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th align="center">
+                        <small>Generated by</small>
+                        <a href="https://github.com/OpenCppCoverage/OpenCppCoverage/releases">
+                            <strong>OpenCppCoverage (Version: 0.9.9.0)</strong>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>Colored.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+    <body onload="prettyPrint()">
+        <h4></h4>
+        <pre class="prettyprint lang-cpp linenums">
+ï»¿// Dx/Tool/Shader/Predef/PassThrough/Colored.h - predefined pass-through shaders await layout with color 
+#pragma once
+namespace prj_3d::HelloWinHlsl::Dx::Tool::Shader::Predef::PassThrough {
+template&lt;class TSPE,class T&gt; class Colored; // primary template, ,class T=TSPE
+
+template&lt;class T&gt; class Colored&lt;DxVer::v9,T&gt; {
+	const Ty::StDxCtx_ptr&lt;T&gt; m_stDxCtx;
+	typename Tool::Shader::Loader::Composite&lt;T&gt;::sptr_t m_psoShaderLoader;
+#pragma region shader
+	const char *m_szShaderSource = R"A0S_HEREDOC(
+struct VOut {
+    float4 position : SV_POSITION;
+    float4 color : COLOR;
+};
+VOut vs_shader(float4 position : POSITION, float4 color : COLOR) {
+    VOut output;
+
+    output.position = position;
+    output.color = color;
+
+    return output;
+}
+float4 ps_shader(float4 position : SV_POSITION, float4 color : COLOR) : SV_TARGET {
+    return color;
+}
+<span style = "background-color:#fdd">)A0S_HEREDOC";</span>
+#pragma endregion
+public:
+	typedef uptr&lt; Colored &gt; uptr_t;
+	Colored(
+		Ty::StDxCtx_crefPtr&lt;T&gt; stDxCtx
+		, typename Tool::Shader::Loader::Composite&lt;T&gt;::cref_ptr_t psoShaderLoader
+	) 
+<span style = "background-color:#fdd">		: m_stDxCtx( stDxCtx )
+		, m_psoShaderLoader( psoShaderLoader )
+	{}</span>
+
+	struct Out_t {
+		CPtr&lt; IDirect3DVertexShader9 &gt; m_pcVs;
+		CPtr &lt;ID3DXBuffer &gt; m_pcBuffer;
+		CPtr&lt; IDirect3DPixelShader9 &gt; m_pcPs;
+		// Useful to omit decltype
+		auto getVetrexContainer() {
+			return std::vector&lt; Vertex&lt; T &gt; &gt;( );
+		}
+	};
+	typedef uptr&lt; Out_t &gt; uptr_Out_t;
+
+	CPtr&lt; IDirect3DPixelShader9 &gt; getPs() { 
+		return m_psoShaderLoader -&gt;sourceCode( ) -&gt;fromMem( ) -&gt;Ps( m_szShaderSource, "ps_shader" );
+	}
+	uptr_Out_t get_Vs_Ps_InputLayout() {
+		Out_t sOut;
+		sOut.m_pcVs = m_psoShaderLoader -&gt;sourceCode( ) -&gt;fromMem( ) -&gt;Vs( m_szShaderSource, "vs_shader", std::addressof( sOut.m_pcBuffer ) );
+		if ( !sOut.m_pcVs )
+			return nullptr;
+		sOut.m_pcPs = getPs( );
+		if ( !sOut.m_pcPs )
+			return nullptr;
+		return uptr_Out_t( new Out_t( sOut ) );
+	}
+};
+
+template&lt;class T&gt; class Colored&lt;DxVer::v10, T&gt; {
+	const Ty::StDxCtx_ptr&lt;T&gt; m_stDxCtx;
+	typename Tool::Shader::Loader::Composite&lt;T&gt;::sptr_t m_psoShaderLoader;
+#pragma region shader
+	const char *m_szShaderSource = R"A0S_HEREDOC(
+struct VOut {
+    float4 position : SV_POSITION;
+    float4 color : COLOR;
+};
+VOut vs_shader(float4 position : POSITION, float4 color : COLOR) {
+    VOut output;
+
+    output.position = position;
+    output.color = color;
+
+    return output;
+}
+float4 ps_shader(float4 position : SV_POSITION, float4 color : COLOR) : SV_TARGET {
+    return color;
+}
+<span style = "background-color:#fdd">)A0S_HEREDOC";</span>
+#pragma endregion
+public:
+	typedef uptr&lt; Colored &gt; uptr_t;
+	Colored(
+		Ty::StDxCtx_crefPtr&lt;T&gt; stDxCtx
+		, typename Tool::Shader::Loader::Composite&lt;T&gt;::cref_ptr_t psoShaderLoader
+	) 
+<span style = "background-color:#fdd">		: m_stDxCtx( stDxCtx )
+		, m_psoShaderLoader( psoShaderLoader )
+	{}</span>
+
+	struct Out_t {
+		CPtr&lt; ID3D10VertexShader &gt; m_pcVs;
+		CPtr &lt;ID3D10Blob &gt; m_cpVsBlob;
+		CPtr&lt; ID3D10PixelShader &gt; m_pcPs;
+		CPtr&lt; ID3D10InputLayout &gt; m_cpLayout;
+		// Useful to omit decltype
+		auto getVetrexContainer() {
+			return std::vector&lt; Vertex&lt; T &gt; &gt;( );
+		}
+	};
+	typedef uptr&lt; Out_t &gt; uptr_Out_t;
+
+	CPtr&lt; ID3D10PixelShader &gt; getPs() { 
+		return m_psoShaderLoader -&gt;sourceCode( ) -&gt;fromMem( ) -&gt;Ps( m_szShaderSource, "ps_shader" );
+	}
+	uptr_Out_t get_Vs_Ps_InputLayout() {
+		Out_t sOut;
+		sOut.m_pcVs = m_psoShaderLoader -&gt;sourceCode( ) -&gt;fromMem( ) -&gt;Vs( m_szShaderSource, "vs_shader", std::addressof( sOut.m_cpVsBlob ) );
+		if ( !sOut.m_pcVs )
+			return nullptr;
+		sOut.m_pcPs = getPs( );
+		if ( !sOut.m_pcPs )
+			return nullptr;
+
+		// Set vertex input layout
+        D3D10_INPUT_ELEMENT_DESC arrDescLayout[] = {
+				{ "POSITION"
+					, 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D10_APPEND_ALIGNED_ELEMENT, D3D10_INPUT_PER_VERTEX_DATA, 0 }
+				, { "COLOR"
+					, 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D10_APPEND_ALIGNED_ELEMENT, D3D10_INPUT_PER_VERTEX_DATA, 0 }
+			};
+        HRESULT hr = m_stDxCtx -&gt;m_pcD3dDevice -&gt;CreateInputLayout(
+                arrDescLayout, _countof( arrDescLayout )
+				, sOut.m_cpVsBlob -&gt;GetBufferPointer( ), sOut.m_cpVsBlob -&gt;GetBufferSize( )
+				, sOut.m_cpLayout.ReleaseAndGetAddressOf( ) 
+            );
+		if ( FAILED( hr ) )
+			return nullptr;
+
+		return uptr_Out_t( new Out_t( sOut ) );
+	}
+
+};
+
+template&lt;class T&gt; class Colored&lt;DxVer::v11, T&gt; {
+	const Ty::StDxCtx_ptr&lt;T&gt; m_stDxCtx;
+	typename Tool::Shader::Loader::Composite&lt;T&gt;::sptr_t m_psoShaderLoader;
+#pragma region shader
+	const char *m_szShaderSource = R"A0S_HEREDOC(
+struct VOut {
+    float4 position : SV_POSITION;
+    float4 color : COLOR;
+};
+VOut vs_shader(float4 position : POSITION, float4 color : COLOR) {
+    VOut output;
+
+    output.position = position;
+    output.color = color;
+
+    return output;
+}
+float4 ps_shader(float4 position : SV_POSITION, float4 color : COLOR) : SV_TARGET {
+    return color;
+}
+<span style = "background-color:#fdd">)A0S_HEREDOC";</span>
+#pragma endregion
+public:
+	typedef uptr&lt; Colored &gt; uptr_t;
+	Colored(
+		Ty::StDxCtx_crefPtr&lt;T&gt; stDxCtx
+		, typename Tool::Shader::Loader::Composite&lt;T&gt;::cref_ptr_t psoShaderLoader
+	) 
+<span style = "background-color:#fdd">		: m_stDxCtx( stDxCtx )
+		, m_psoShaderLoader( psoShaderLoader )
+	{}</span>
+
+	struct Out_t {
+		CPtr&lt; ID3D11VertexShader &gt; m_pcVs;
+		CPtr&lt; ID3DBlob &gt; m_cpVsBlob;
+		CPtr&lt; ID3D11PixelShader &gt; m_pcPs;
+		CPtr&lt; ID3D11InputLayout &gt; m_cpLayout;
+		// Useful to omit decltype
+		auto getVetrexContainer() {
+			return std::vector&lt; Vertex&lt; T &gt; &gt;( );
+		}
+	};
+	typedef uptr&lt; Out_t &gt; uptr_Out_t;
+
+	CPtr&lt; ID3D11PixelShader &gt; getPs() { 
+		return m_psoShaderLoader -&gt;sourceCode( ) -&gt;fromMem( ) -&gt;Ps( m_szShaderSource, "ps_shader" );
+	}
+	uptr_Out_t get_Vs_Ps_InputLayout() {
+		Out_t sOut;
+		sOut.m_pcVs = m_psoShaderLoader -&gt;sourceCode( ) -&gt;fromMem( ) -&gt;Vs( m_szShaderSource, "vs_shader", std::addressof( sOut.m_cpVsBlob ) );
+		if ( !sOut.m_pcVs )
+			return nullptr;
+		sOut.m_pcPs = getPs( );
+		if ( !sOut.m_pcPs )
+			return nullptr;
+
+		// Set vertex input layout
+        D3D11_INPUT_ELEMENT_DESC arrDescLayout[] = {
+				{ "POSITION"
+					, 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+				, { "COLOR"
+					, 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+			};
+        HRESULT hr = m_stDxCtx -&gt;m_pcD3dDevice -&gt;CreateInputLayout(
+                arrDescLayout, _countof( arrDescLayout )
+				, sOut.m_cpVsBlob -&gt;GetBufferPointer( ), sOut.m_cpVsBlob -&gt;GetBufferSize( )
+				, sOut.m_cpLayout.ReleaseAndGetAddressOf( ) 
+            );
+		if ( FAILED( hr ) )
+			return nullptr;
+
+		return uptr_Out_t( new Out_t( sOut ) );
+	}
+
+};
+
+template&lt;class T&gt; class Colored&lt;DxVer::v12, T&gt; {
+	const Ty::StDxCtx_ptr&lt;T&gt; m_stDxCtx;
+	typename Tool::Shader::Loader::Composite&lt;T&gt;::sptr_t m_psoShaderLoader;
+#pragma region shader
+	const char *m_szShaderSource = R"A0S_HEREDOC(
+struct PSInput {
+    float4 position : SV_POSITION;
+    float4 color : COLOR;
+};
+PSInput vs_shader(float4 position : POSITION, float4 color : COLOR) {
+    PSInput result;
+
+    result.position = position;
+    result.color = color;
+
+    return result;
+}
+float4 ps_shader(PSInput input) : SV_TARGET {
+    return input.color;
+}
+<span style = "background-color:#fdd">)A0S_HEREDOC";</span>
+#pragma endregion
+public:
+	typedef uptr&lt; Colored &gt; uptr_t;
+	Colored(
+		Ty::StDxCtx_crefPtr&lt;T&gt; stDxCtx
+		, typename Tool::Shader::Loader::Composite&lt;T&gt;::cref_ptr_t psoShaderLoader
+	) 
+<span style = "background-color:#fdd">		: m_stDxCtx( stDxCtx )
+		, m_psoShaderLoader( psoShaderLoader )
+	{}</span>
+
+	struct Out_t {
+		CPtr&lt; ID3DBlob &gt; m_pcVs;
+		CPtr&lt; ID3DBlob &gt; m_pcPs;
+		std::vector&lt; D3D12_INPUT_ELEMENT_DESC &gt; m_inputElementDescs;
+		// Useful to omit decltype. Until C++20 when allow pass class instance to template arg
+		auto getVetrexContainer() {
+			return std::vector&lt; Vertex&lt; T &gt; &gt;( );
+		}
+	};
+	typedef uptr&lt; Out_t &gt; uptr_Out_t;
+
+	CPtr&lt; ID3DBlob &gt; getPs() { 
+		return m_psoShaderLoader -&gt;sourceCode( ) -&gt;fromMem( ) -&gt;Ps( m_szShaderSource, "ps_shader" );
+	}
+	uptr_Out_t get_Vs_Ps_InputLayout() {
+		Out_t sOut;
+		sOut.m_pcVs = m_psoShaderLoader -&gt;sourceCode( ) -&gt;fromMem( ) -&gt;Vs( m_szShaderSource, "vs_shader" );
+		if ( !sOut.m_pcVs )
+			return nullptr;
+		sOut.m_pcPs = getPs( );
+		if ( !sOut.m_pcPs )
+			return nullptr;
+
+		// Define the vertex input layout.
+		// vector&lt;struct Xxx&gt; its plain memory: "contiguous storage" condition from C++03
+		// @insp stackoverflow.com/questions/19376820/is-stdvector-guaranteed-not-to-leave-gaps-between-elements
+        sOut.m_inputElementDescs = {
+				{ "POSITION", 0
+					, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D12_APPEND_ALIGNED_ELEMENT
+					, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
+				, { "COLOR", 0
+					, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D12_APPEND_ALIGNED_ELEMENT
+					, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
+			};
+
+		return uptr_Out_t( new Out_t( sOut ) );
+	}
+
+};
+} // namespace prj_3d::HelloWinHlsl::Dx::Tool::Shader::Predef::PassThrough</pre>
+        <hr />
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th align="center">
+                        <small>Generated by</small>
+                        <a href="https://github.com/OpenCppCoverage/OpenCppCoverage/releases">
+                            <strong>OpenCppCoverage (Version: 0.9.9.0)</strong>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </body>
+</html>
