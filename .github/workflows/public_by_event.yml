@@ -17,7 +17,7 @@ jobs:
       - name: Download artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{ secrets.FROM_USER_SETTINGS__PAT_CLASSIC_TINYSYNAPTICSSCROLL }}
+          github_token: ${{ secrets.ACCESS_TO_READ_ARTIFACT_FROM_ALL_REPOS }}
           repo: ${{ github.event.client_payload.repo }}
           workflow: ${{ github.event.client_payload.workflow }}
           name: ${{ github.event.client_payload.artifact }}
