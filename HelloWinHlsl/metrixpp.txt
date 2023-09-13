@@ -1,0 +1,103 @@
+Version metrixpp/metrix++/metrixplusplus from 'git show --summary': [
+commit 78dc5380de9aaa3d615f8be6c84e90cb2ae0d90b
+Merge: 6a7c461 3671b3d
+Author: Andrey <avkonst@gmail.com>
+Date:   Sun Dec 18 11:21:30 2022 +1300
+
+    Merge pull request #56 from thom-sch/Issue43_UnicodeDecodeError
+    
+    Detect correct file coding
+
+]
+D:/a/HelloWinHlsl/HelloWinHlsl/src:: info: Overall metrics for 'std.code.complexity:cyclomatic' metric
+	Average        : 0.75774648
+	Minimum        : 0
+	Maximum        : 17
+	Total          : 269.0
+	Distribution   : 355 regions in total (including 0 suppressed)
+	  Metric value : Ratio : R-sum : Number of regions
+	             0 : 0.710 : 0.710 : 252	||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+	             1 : 0.127 : 0.837 :  45	||||||||||||
+	             2 : 0.054 : 0.890 :  19	|||||
+	             3 : 0.039 : 0.930 :  14	|||
+	             4 : 0.031 : 0.961 :  11	|||
+	             5 : 0.014 : 0.975 :   5	|
+	             6 : 0.006 : 0.980 :   2	
+	             7 : 0.011 : 0.992 :   4	|
+	             8 : 0.003 : 0.994 :   1	
+	            10 : 0.003 : 0.997 :   1	
+	            17 : 0.003 : 1.000 :   1	
+
+D:/a/HelloWinHlsl/HelloWinHlsl/src:: info: Overall metrics for 'std.code.lines:code' metric
+	Average        : 7.12634409
+	Minimum        : 0
+	Maximum        : 171
+	Total          : 5302.0
+	Distribution   : 744 regions in total (including 0 suppressed)
+	  Metric value : Ratio : R-sum : Number of regions
+	             0 : 0.112 : 0.112 :  83	|||||||||||
+	           1-2 : 0.112 : 0.223 :  83	|||||||||||
+	             3 : 0.224 : 0.448 : 167	||||||||||||||||||||||
+	             4 : 0.134 : 0.582 : 100	|||||||||||||
+	             5 : 0.071 : 0.653 :  53	|||||||
+	             6 : 0.050 : 0.703 :  37	||||
+	             7 : 0.069 : 0.772 :  51	||||||
+	             8 : 0.038 : 0.809 :  28	|||
+	             9 : 0.026 : 0.835 :  19	||
+	         10-11 : 0.023 : 0.858 :  17	||
+	         12-13 : 0.022 : 0.879 :  16	||
+	         14-15 : 0.013 : 0.892 :  10	|
+	            16 : 0.017 : 0.910 :  13	|
+	         17-19 : 0.017 : 0.927 :  13	|
+	         20-21 : 0.012 : 0.940 :   9	|
+	         22-23 : 0.012 : 0.952 :   9	|
+	         24-27 : 0.013 : 0.965 :  10	|
+	         28-35 : 0.012 : 0.977 :   9	|
+	         40-57 : 0.011 : 0.988 :   8	|
+	        61-171 : 0.012 : 1.000 :   9	|
+
+D:/a/HelloWinHlsl/HelloWinHlsl/src:: info: Overall metrics for 'std.code.lines:comments' metric
+	Average        : 1.09543011
+	Minimum        : 0
+	Maximum        : 36
+	Total          : 815.0
+	Distribution   : 744 regions in total (including 0 suppressed)
+	  Metric value : Ratio : R-sum : Number of regions
+	             0 : 0.558 : 0.558 : 415	|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+	             1 : 0.282 : 0.840 : 210	||||||||||||||||||||||||||||
+	             2 : 0.058 : 0.898 :  43	|||||
+	             3 : 0.035 : 0.933 :  26	|||
+	             4 : 0.020 : 0.953 :  15	||
+	             5 : 0.005 : 0.958 :   4	
+	             6 : 0.004 : 0.962 :   3	
+	             7 : 0.011 : 0.973 :   8	|
+	             8 : 0.001 : 0.974 :   1	
+	             9 : 0.007 : 0.981 :   5	
+	            10 : 0.001 : 0.983 :   1	
+	            11 : 0.001 : 0.984 :   1	
+	            12 : 0.004 : 0.988 :   3	
+	            14 : 0.001 : 0.989 :   1	
+	            15 : 0.001 : 0.991 :   1	
+	            16 : 0.003 : 0.993 :   2	
+	            17 : 0.001 : 0.995 :   1	
+	            19 : 0.001 : 0.996 :   1	
+	            20 : 0.001 : 0.997 :   1	
+	         24-36 : 0.003 : 1.000 :   2	
+
+D:/a/HelloWinHlsl/HelloWinHlsl/src:: info: Directory content:
+	Directory      : ClientApp
+	Directory      : DrawAux
+	Directory      : Dx
+	Directory      : DxtkFont
+	Directory      : FrameLimiter
+	Directory      : GameLoop
+	Directory      : LikeDxut
+	Directory      : Sys
+	Directory      : Tpl
+	Directory      : _pch
+	File           : HelloWinHlsl.cpp
+	File           : HelloWinHlsl.h
+	File           : Main.h
+	File           : Version.h
+
+
