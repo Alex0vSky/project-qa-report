@@ -1,5 +1,5 @@
 name: Try JamesIves/github-pages-deploy-action
-on: [workflow_dispatch]
+on: { workflow_dispatch, push: { paths-ignore: [ '**', '!.github/workflows/deploy_aka_JamesIves.yml' ] } }
 permissions:
   contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
 jobs:
@@ -19,6 +19,7 @@ jobs:
       - name: Mark
         run: |
           echo "'${{github.workflow}}', '${{github.run_number}}.${{github.run_attempt}}'" > HelloWinHlsl/from_action.txt
+          ls HelloWinHlsl
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
