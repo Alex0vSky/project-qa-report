@@ -2,6 +2,12 @@ name: Publish GitHubPages by event
 on: { repository_dispatch: { types: [a0s_event_public_pages] } }
 permissions:
   contents: write # write for "JamesIves/github-pages-deploy-action"
+  pages: write
+  id-token: write
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 # Has no configuration
 jobs:
   build:
