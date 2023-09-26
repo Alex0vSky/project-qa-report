@@ -3,5 +3,5 @@
   <cppcheck version="2.11" />
   <errors>
   </errors>
-  <Arguments> --language=c++ --std=c++17 --platform=win64 --library=microsoft_sal --library=windows --enable=all --inline-suppr -q --xml  -I "D:\a\HelloWinHlsl\HelloWinHlsl\src" -I "D:\a\HelloWinHlsl\HelloWinHlsl\src\_pch" -I "D:\a\HelloWinHlsl\HelloWinHlsl\ThirdParty" -DA0S_cppcheck__ -D__INTELLISENSE__ -DBOOST_PFR_HAS_GUARANTEED_COPY_ELISION=0 --suppress=unreadVariable  --suppress=missingIncludeSystem  D:\a\HelloWinHlsl\HelloWinHlsl\src</Arguments>
+  <Arguments> --language=c++ --std=c++17 --platform=win64 --library=microsoft_sal --library=windows --enable=all --inline-suppr -q --xml  -I "D:\a\HelloWinHlsl\HelloWinHlsl\src" -I "D:\a\HelloWinHlsl\HelloWinHlsl\src\_pch" -I "D:\a\HelloWinHlsl\HelloWinHlsl\ThirdParty" -DA0S_cppcheck__ -D__INTELLISENSE__ -D_MSC_VER --suppress=unreadVariable  --suppress=missingIncludeSystem  D:\a\HelloWinHlsl\HelloWinHlsl\src</Arguments>
 </results>
