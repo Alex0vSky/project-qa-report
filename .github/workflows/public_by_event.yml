@@ -1,7 +1,8 @@
 name: Publish GitHubPages by event
 on: { repository_dispatch: { types: [a0s_event_public_pages] } }
 permissions:
-  contents: write # write for "JamesIves/github-pages-deploy-action"
+  #contents: write # write for "JamesIves/github-pages-deploy-action"
+  contents: read
   pages: write
   id-token: write
 # Allow one concurrent deployment
@@ -10,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 # Has no configuration
 jobs:
-  build-and-deploy:
+  build:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     steps:
@@ -32,10 +33,26 @@ jobs:
           path: ${{ github.event.client_payload.project }}
       - name: Mark
         run: echo "'${{github.workflow}}', '${{github.run_number}}.${{github.run_attempt}}'" > ${{ github.event.client_payload.project }}/from_action.txt
-      # Source GitHubPages need not to be in "action"?
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      ## Source GitHubPages need not to be in "action"?
+      #- name: Deploy 🚀
+      #  uses: JamesIves/github-pages-deploy-action@v4
+      #  with:
+      #    branch: main
+      #    folder: ${{ github.event.client_payload.project }}
+      #    target-folder: ${{ github.event.client_payload.project }}
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          branch: main
-          folder: ${{ github.event.client_payload.project }}
-          target-folder: ${{ github.event.client_payload.project }}
+          path: "${{ github.event.client_payload.project }}"
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
