@@ -1,5 +1,5 @@
 name: Try JamesIves/github-pages-deploy-action
-on: [push,workflow_dispatch]
+on: [workflow_dispatch]
 permissions:
   contents: write # read for "actions/checkout@v3" when GITHUB_TOKEN, write for "JamesIves/github-pages-deploy-action"
 jobs:
@@ -10,16 +10,18 @@ jobs:
       - name: Download artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{ secrets.FROM_USER_SETTINGS__PAT_CLASSIC_TINYSYNAPTICSSCROLL }}
-          workflow: googletest.yml
-          name: my-artifact
+          github_token: ${{ secrets.ACCESS_TO_READ_ARTIFACT_FROM_ALL_REPOS }}
+          repo: Alex0vSky/HelloWinHlsl
+          workflow: qa-StaticAnalysis-CodeMetrics.yml
+          name: artifact-qa-StaticAnalysis_CodeMetrics
           search_artifacts: true
-          repo: Alexovsky5/turbo-octo-adventure
-      - name: Renaming
+          path: HelloWinHlsl
+      - name: Mark
         run: |
-          mv -v gtest_report/out/gtest_report.html gtest_report/out/index.html
+          echo "'${{github.workflow}}', '${{github.run_number}}.${{github.run_attempt}}'" > HelloWinHlsl/from_action.txt
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: main
-          folder: gtest_report/out
+          folder: HelloWinHlsl
+          target-folder: HelloWinHlsl
