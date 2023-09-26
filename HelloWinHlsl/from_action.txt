@@ -1,1 +1,1 @@
-'Try JamesIves/github-pages-deploy-action', '60.1'
+'Try JamesIves/github-pages-deploy-action', '61.1'
