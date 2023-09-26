@@ -4,7 +4,7 @@ permissions:
   contents: write # write for "JamesIves/github-pages-deploy-action"
 # Has no configuration
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,3 +31,14 @@ jobs:
           branch: main
           folder: ${{ github.event.client_payload.project }}
           target-folder: ${{ github.event.client_payload.project }}
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
