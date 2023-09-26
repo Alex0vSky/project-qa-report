@@ -19,6 +19,7 @@ jobs:
       - name: Mark
         run: |
           echo "'${{github.workflow}}', '${{github.run_number}}.${{github.run_attempt}}'" > HelloWinHlsl/from_action.txt
+          ls .
           ls HelloWinHlsl
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
@@ -26,3 +27,4 @@ jobs:
           branch: main
           folder: HelloWinHlsl
           target-folder: HelloWinHlsl
+          clean: true
