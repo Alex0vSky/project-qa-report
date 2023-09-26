@@ -1,1 +1,1 @@
-'Publish GitHubPages by event', '26.1'
+'Publish GitHubPages by event', '27.1'
